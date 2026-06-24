@@ -12,3 +12,27 @@
   margin: var(--space-5) 0 var(--space-2);
   letter-spacing: -0.02em;
 }
+
+.localBanner {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-gray-100);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.status {
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.statusError {
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.95rem;
+}

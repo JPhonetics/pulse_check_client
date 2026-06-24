@@ -31,13 +31,15 @@ export default function ArticleCard({ article, isSaved = false, onSaveToggle, on
       aria-label={article.title}
     >
       <div className={styles.imageWrap}>
-        <img
-          src={article.imageUrl}
-          alt=""
-          className={styles.image}
-          loading="lazy"
-          onError={e => { e.target.style.display = 'none'; }}
-        />
+        {article.imageUrl ? (
+          <img
+            src={article.imageUrl}
+            alt=""
+            className={styles.image}
+            loading="lazy"
+            onError={e => { e.target.style.display = 'none'; }}
+          />
+        ) : null}
       </div>
 
       <div className={styles.body}>

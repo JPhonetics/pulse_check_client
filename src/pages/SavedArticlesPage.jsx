@@ -2,12 +2,13 @@ import { useState, useMemo } from 'react';
 import ArticleGrid from '../components/articles/ArticleGrid';
 import Pagination from '../components/articles/Pagination';
 import SortControl from '../components/ui/SortControl';
-import { getArticlesByIds } from '../services/articlesService';
 import { useSaved } from '../contexts/SavedContext';
 import styles from './SavedArticlesPage.module.css';
 
+const PAGE_SIZE = 9;
+
 export default function SavedArticlesPage() {
-  const { savedArticleIds, toggleSaveArticle } = useSaved();
+  const { savedArticles, savedArticleIds, toggleSaveArticle } = useSaved();
   const [sort, setSort] = useState('desc');
   const [page, setPage] = useState(1);
 
@@ -16,16 +17,20 @@ export default function SavedArticlesPage() {
     setPrevSort(sort);
     setPage(1);
   }
-
   const effectivePage = prevSort !== sort ? 1 : page;
-  const ids = useMemo(() => [...savedArticleIds], [savedArticleIds]);
 
-  const result = useMemo(
-    () => getArticlesByIds({ ids, sort, page: effectivePage }),
-    [ids, sort, effectivePage]
-  );
+  const sorted = useMemo(() => {
+    return [...savedArticles].sort((a, b) => {
+      const diff = new Date(b.publishDate) - new Date(a.publishDate);
+      return sort === 'asc' ? -diff : diff;
+    });
+  }, [savedArticles, sort]);
 
-  const isEmpty = savedArticleIds.size === 0;
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  const safePage = Math.min(effectivePage, totalPages);
+  const pageArticles = sorted.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+  const isEmpty = savedArticles.length === 0;
 
   return (
     <main className={styles.main}>
@@ -41,11 +46,11 @@ export default function SavedArticlesPage() {
       ) : (
         <>
           <ArticleGrid
-            articles={result.articles}
+            articles={pageArticles}
             savedIds={savedArticleIds}
-            onSaveToggle={a => toggleSaveArticle(a.id)}
+            onSaveToggle={a => toggleSaveArticle(a)}
           />
-          <Pagination page={result.page} totalPages={result.totalPages} onChange={setPage} />
+          <Pagination page={safePage} totalPages={totalPages} onChange={setPage} />
         </>
       )}
     </main>

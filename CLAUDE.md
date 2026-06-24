@@ -104,11 +104,14 @@ url         string   source article URL (opened in new tab on card click)
 
 Each component has a co-located `.module.css` file (CSS Modules). Global design tokens are in `src/index.css`:
 
-- **Color tokens**: `--text`, `--text-h`, `--bg`, `--border`, `--code-bg`, `--accent` (purple), `--color-navy`
-- **Font tokens**: `--sans` (system-ui), `--heading`, `--mono`
-- **Dark mode**: `@media (prefers-color-scheme: dark)` — tokens flip automatically
-- **Root layout**: `#root` is `max-width: 1126px`, flexbox column
-- **Responsive breakpoint**: `max-width: 1024px` downsizes base font from 18 px → 16 px
+- **Color tokens** (semantic aliases over raw palette): `--bg`, `--surface`, `--text`, `--text-muted`, `--text-inverted`, `--border`, `--border-dark`, `--accent` (red `#C41E3A`), `--accent-hover`, `--nav-bg`, `--nav-text`
+- **Raw palette**: `--color-navy` (#0B1D3A), `--color-navy-dark`, `--color-navy-light`, `--color-red`, `--color-gray-{50,100,200,300,400,500}`, `--color-white`
+- **Font tokens**: `--font-heading` (Montserrat), `--font-body` (Open Sans)
+- **Spacing scale**: `--space-{1,2,3,4,5,6,8,10,12}` (4 px increments)
+- **Other tokens**: `--radius-{sm,md,lg,xl,full}`, `--shadow-{sm,md,lg,xl}`, `--transition-{fast,base}`
+- **No dark mode** — there is no `prefers-color-scheme` media query
+- **Root layout**: `#root` is `max-width: 1126px` (`--max-width`), flexbox column
+- **Responsive breakpoints**: `max-width: 1024px` → 17 px → 15 px; `max-width: 640px` → 15 px → 14 px
 - CSS nesting is used throughout — supported by Vite's PostCSS defaults
 
 `src/App.css` is a starter-template artifact; it can be replaced or emptied.
@@ -130,3 +133,5 @@ When connecting a real backend:
 3. Replace `paymentService.js` `initiateDonation` with Stripe Checkout redirect
 4. Persist `SavedContext` state to the backend (currently in-memory only)
 5. `LocationContext` already persists to `localStorage` — no change needed
+6. `axios` is already installed as a dependency — use it for API calls in service modules
+7. `app_outline/db_schema.sql` contains the planned database schema for reference
