@@ -27,7 +27,7 @@ The frontend is React 19 + React Router v7, bundled with Vite 8. **Stage 1 (mock
 - **Pagination**: numbered pages of 9 (3 × 3) across all paginated views.
 - **Regions**: World / US / Local (Local requires a set location; triggers Set Local Region popup if unset).
 - **Sub-categories**: All, Business, Crime, Entertainment, Health, Politics, Sports, Tech, Weather (defined in `src/components/ui/subcategories.js`).
-- **Search**: searches title/description across all regions/sub-categories; mutually exclusive with active region/sub-category filtering (switching to a region tab exits search).
+- **Search**: searches title/description across all regions/sub-categories; mutually exclusive with active region/sub-category filtering (switching to a region tab exits search). Query is driven by the `?q=` URL param (via `useSearchParams`). `SearchPage` also exposes a date-range filter and an asc/desc sort toggle (`SortControl`).
 - **Guest vs. registered**: guests can browse and set a local region (stored in browser); registered users can also save articles and searches.
 - **Donate button**: Stripe-powered donation flow (on every page in the header).
 - **Saved searches**: each card has a dedicated Search button (re-run) separate from the save flag (unsave).
@@ -51,6 +51,8 @@ BrowserRouter > AuthProvider > LocationProvider > SavedProvider > App
 
 All modals are managed in `App` via a single `modal` state: `null | 'auth' | 'location' | 'donate' | 'profile'`. Modal open/close calls flow down from `App` through props. `App` also owns the global `region` and `category` filter state and passes them to `Header` and `HomePage`.
 
+`App` also holds `authInitScreen` (`'login' | 'register'`) which is forwarded to `AuthModal` as `initialScreen` so callers can open directly to the register tab if needed.
+
 **`onAuthRequired` callback convention** (used throughout the tree): passing the string `'profile'` opens the profile modal directly; passing any other string (or no argument) opens the auth modal and uses the string as a contextual hint displayed to the user (e.g. `'Log in to save articles.'`).
 
 ### Services (`src/services/`)
@@ -58,7 +60,7 @@ All modals are managed in `App` via a single `modal` state: `null | 'auth' | 'lo
 All service modules expose stable async function signatures. Stage 1 internals are mocks; replace internals only in Stage 2 — callers do not change.
 
 - **`articlesService.js`** — `getArticles`, `searchArticles`, `getArticlesByIds`; reads from `src/data/articles.json`
-- **`authService.js`** — `login`, `register`, `requestPasswordReset`, `validateResetToken`, `setNewPassword`, `updateProfile`, `updatePassword`; in-memory accounts, seed: `demo@example.com / password`
+- **`authService.js`** — `login`, `register`, `requestPasswordReset`, `validateResetToken`, `setNewPassword`, `updateProfile`, `updatePassword`; in-memory accounts, seed: `demo@example.com / password`. In mock mode, any token passed to `validateResetToken` is valid **except** the literal string `'expired'` — navigate to `/password-reset/expired` to exercise the expired-token UI.
 - **`paymentService.js`** — `initiateDonation({ amount })`; stub returning `{ ok: true, stub: true }`
 
 **Stage 1 note**: `getArticles` / `searchArticles` / `getArticlesByIds` are currently synchronous (they read a local JSON import), so their callers use `useMemo` rather than `useEffect`+`useState`. Stage 2 will need to change callers to async data-fetching when the service internals become real `fetch` calls.
@@ -114,6 +116,8 @@ Each component has a co-located `.module.css` file (CSS Modules). Global design 
 ### Other Conventions
 
 - `public/icons.svg` is a sprite sheet; reference icons via `<use href="/icons.svg#icon-name">` (wrapped by `src/components/ui/Icon.jsx`).
+- `src/components/ui/PasswordInput.jsx` is a reusable password field with a show/hide toggle — use it in any form that takes a password.
+- `src/components/ui/SortControl.jsx` renders the asc/desc sort toggle button — used on `SearchPage` and available for other list views.
 - `app_outline/` contains wireframes (PNG) and the product spec — not shipped to production.
 - `src/data/locations.js` exports `searchLocations(query)` for the Local Region type-ahead (static list of ~80 US cities).
 
