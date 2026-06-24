@@ -1,0 +1,105 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 29, 58, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 400;
+  padding: var(--space-4);
+  animation: fadeIn 180ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  animation: slideUp 200ms ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(12px); opacity: 0.8; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--text-muted);
+  line-height: 0;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.closeBtn:hover { color: var(--text); }
+
+.icon {
+  color: var(--accent);
+  margin-top: var(--space-2);
+  line-height: 0;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+.text {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.saveBtn {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--accent);
+  color: var(--text-inverted);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background var(--transition-fast);
+
+  &:hover:not(:disabled) { background: var(--accent-hover); }
+  &:disabled { opacity: 0.7; cursor: not-allowed; }
+}
+
+.skipBtn {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover { color: var(--text); }
+}

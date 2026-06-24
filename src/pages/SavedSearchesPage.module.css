@@ -1,0 +1,115 @@
+.main {
+  flex: 1;
+  padding: 0 var(--space-4);
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-5) 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--border);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.01em;
+}
+
+.empty {
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+/* ── Search card list ─────────────────────────────────────────────────────── */
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.saveDate {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-1);
+}
+
+.criteria {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dateRange {
+  font-size: 0.82rem;
+  color: var(--color-gray-400);
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.searchBtn {
+  background: var(--bg);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.searchBtn:hover {
+  background: var(--color-gray-100);
+  border-color: var(--color-gray-400);
+}
+
+.unsaveBtn {
+  color: var(--accent);
+  line-height: 0;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.unsaveBtn:hover {
+  color: var(--accent-hover);
+}

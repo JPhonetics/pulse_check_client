@@ -1,0 +1,151 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Tuesday, June 23, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [active] [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Local Headlines" [level=1] [ref=e317]
+    - generic [ref=e62]:
+      - link "Port of Los Angeles Sets New Monthly Container Record" [ref=e318] [cursor=pointer]:
+        - generic [ref=e320]:
+          - generic [ref=e321]:
+            - generic [ref=e322]: Business
+            - button "Save article" [ref=e323]:
+              - img [ref=e324]
+          - heading "Port of Los Angeles Sets New Monthly Container Record" [level=3] [ref=e326]
+          - paragraph [ref=e327]: The Port of Los Angeles processed a record 1.14 million twenty-foot equivalent units in May, its highest single-month volume in history, driven by surging imports of consumer electronics and home goods ahead of summer.
+          - generic [ref=e328]:
+            - generic [ref=e329]: LA Times
+            - generic [ref=e330]: Jun 23, 2026
+      - link "LA County Declares Public Health Alert Over West Nile Virus Spike" [ref=e331] [cursor=pointer]:
+        - generic [ref=e333]:
+          - generic [ref=e334]:
+            - generic [ref=e335]: Health
+            - button "Save article" [ref=e336]:
+              - img [ref=e337]
+          - heading "LA County Declares Public Health Alert Over West Nile Virus Spike" [level=3] [ref=e339]
+          - paragraph [ref=e340]: Los Angeles County Public Health officials issued a public health alert after confirmed West Nile Virus cases jumped to 47 this month — triple the count for the same period last year — urging residents to eliminate standing water and use insect repellent.
+          - generic [ref=e341]:
+            - generic [ref=e342]: KTLA 5
+            - generic [ref=e343]: Jun 23, 2026
+      - link "Santa Ana Winds Return Early; Red Flag Warning for LA County" [ref=e344] [cursor=pointer]:
+        - generic [ref=e346]:
+          - generic [ref=e347]:
+            - generic [ref=e348]: Weather
+            - button "Save article" [ref=e349]:
+              - img [ref=e350]
+          - heading "Santa Ana Winds Return Early; Red Flag Warning for LA County" [level=3] [ref=e352]
+          - paragraph [ref=e353]: The National Weather Service issued a Red Flag Warning for Los Angeles County as Santa Ana winds with gusts up to 65 mph are forecast through Wednesday morning, raising critical wildfire risk across hillside communities.
+          - generic [ref=e354]:
+            - generic [ref=e355]: NWS Los Angeles
+            - generic [ref=e356]: Jun 22, 2026
+      - link "Lakers Draft Lottery Win Brings First Pick in 18 Years" [ref=e357] [cursor=pointer]:
+        - generic [ref=e359]:
+          - generic [ref=e360]:
+            - generic [ref=e361]: Sports
+            - button "Save article" [ref=e362]:
+              - img [ref=e363]
+          - heading "Lakers Draft Lottery Win Brings First Pick in 18 Years" [level=3] [ref=e365]
+          - paragraph [ref=e366]: The Los Angeles Lakers defied 4.5% odds to win the 2026 NBA Draft Lottery, securing the first overall pick for the first time since 2008, setting up a franchise-altering selection with multiple generational prospects available.
+          - generic [ref=e367]:
+            - generic [ref=e368]: ESPN LA
+            - generic [ref=e369]: Jun 22, 2026
+      - link "Dodgers Walk Off in 11th to Extend Division Lead to 8.5 Games" [ref=e370] [cursor=pointer]:
+        - generic [ref=e372]:
+          - generic [ref=e373]:
+            - generic [ref=e374]: Sports
+            - button "Save article" [ref=e375]:
+              - img [ref=e376]
+          - heading "Dodgers Walk Off in 11th to Extend Division Lead to 8.5 Games" [level=3] [ref=e378]
+          - paragraph [ref=e379]: Freddie Freeman's two-run walk-off single in the bottom of the 11th inning gave the Los Angeles Dodgers a 5-3 victory over the San Francisco Giants, extending their NL West division lead to a season-best 8.5 games.
+          - generic [ref=e380]:
+            - generic [ref=e381]: MLB.com
+            - generic [ref=e382]: Jun 22, 2026
+      - link "LA Mayor Signs Executive Order Accelerating Affordable Housing Permits" [ref=e383] [cursor=pointer]:
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - generic [ref=e387]: Politics
+            - button "Save article" [ref=e388]:
+              - img [ref=e389]
+          - heading "LA Mayor Signs Executive Order Accelerating Affordable Housing Permits" [level=3] [ref=e391]
+          - paragraph [ref=e392]: Mayor Karen Bass signed an executive order mandating that all affordable housing permit applications receive a decision within 60 days, part of an aggressive push to add 26,000 affordable units across the city by 2028.
+          - generic [ref=e393]:
+            - generic [ref=e394]: Curbed LA
+            - generic [ref=e395]: Jun 22, 2026
+      - link "LAPD Dismantles Porch Pirate Ring Stealing from 200+ Homes" [ref=e396] [cursor=pointer]:
+        - generic [ref=e398]:
+          - generic [ref=e399]:
+            - generic [ref=e400]: Crime
+            - button "Save article" [ref=e401]:
+              - img [ref=e402]
+          - heading "LAPD Dismantles Porch Pirate Ring Stealing from 200+ Homes" [level=3] [ref=e404]
+          - paragraph [ref=e405]: Los Angeles police arrested six suspects in connection with an organized package theft operation targeting single-family homes across the San Fernando Valley and Westside, recovering over $85,000 in stolen goods.
+          - generic [ref=e406]:
+            - generic [ref=e407]: CBS Los Angeles
+            - generic [ref=e408]: Jun 22, 2026
+      - link "LA Film Festival Returns to Rooftop Venues for Summer Showcase" [ref=e409] [cursor=pointer]:
+        - generic [ref=e411]:
+          - generic [ref=e412]:
+            - generic [ref=e413]: Entertainment
+            - button "Save article" [ref=e414]:
+              - img [ref=e415]
+          - heading "LA Film Festival Returns to Rooftop Venues for Summer Showcase" [level=3] [ref=e417]
+          - paragraph [ref=e418]: Film Independent's Los Angeles Film Festival kicks off this weekend with screenings at 14 venues across the city, featuring 47 world premieres and a retrospective honoring pioneering indie filmmaker John Cassavetes.
+          - generic [ref=e419]:
+            - generic [ref=e420]: LA Weekly
+            - generic [ref=e421]: Jun 21, 2026
+      - link "LA Designated as National AI Innovation Hub by Commerce Department" [ref=e422] [cursor=pointer]:
+        - generic [ref=e424]:
+          - generic [ref=e425]:
+            - generic [ref=e426]: Tech
+            - button "Save article" [ref=e427]:
+              - img [ref=e428]
+          - heading "LA Designated as National AI Innovation Hub by Commerce Department" [level=3] [ref=e430]
+          - paragraph [ref=e431]: The US Department of Commerce designated Los Angeles as one of five National AI Innovation Hubs, unlocking $340 million in federal funding to support AI research at UCLA, USC, and CalTech alongside local startup ecosystems.
+          - generic [ref=e432]:
+            - generic [ref=e433]: Los Angeles Times
+            - generic [ref=e434]: Jun 20, 2026
+    - navigation "Pagination" [ref=e180]:
+      - button "Page 1" [ref=e181]: "1"
+      - button "Page 2" [ref=e182] [cursor=pointer]: "2"

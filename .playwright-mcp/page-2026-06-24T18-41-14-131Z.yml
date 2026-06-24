@@ -1,0 +1,154 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Wednesday, June 24, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Set Location
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Account menu for Demo" [ref=e148] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [active] [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+      - button "Saved Articles" [ref=e149] [cursor=pointer]
+      - button "Saved Searches" [ref=e150] [cursor=pointer]
+    - button "Logout" [ref=e152] [cursor=pointer]
+  - main [ref=e351]:
+    - heading "US Headlines" [level=1] [ref=e419]
+    - generic [ref=e420]:
+      - link "Best Buy Is Slashing Prices. Here Are 50+ Deals Worth Shopping Right Now" [ref=e421] [cursor=pointer]:
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - generic [ref=e425]: All
+            - button "Save article" [ref=e426]:
+              - img [ref=e427]
+          - heading "Best Buy Is Slashing Prices. Here Are 50+ Deals Worth Shopping Right Now" [level=3] [ref=e429]
+          - paragraph [ref=e430]: You don't need an Amazon membership to score these discounts on top tech products.
+          - generic [ref=e431]:
+            - generic [ref=e432]: cnet
+            - generic [ref=e433]: Jun 23, 2026
+      - link "Forget storage anxiety with this 20TB Seagate external hard drive — it's one of our favourites and it's 32% off" [ref=e434] [cursor=pointer]:
+        - generic [ref=e436]:
+          - generic [ref=e437]:
+            - generic [ref=e438]: All
+            - button "Save article" [ref=e439]:
+              - img [ref=e440]
+          - heading "Forget storage anxiety with this 20TB Seagate external hard drive — it's one of our favourites and it's 32% off" [level=3] [ref=e442]
+          - paragraph [ref=e443]: We named Seagate’s Expansion Desktop the best external hard drive for high capacity and it’s down to just AU$623.73 via Amazon Germany.
+          - generic [ref=e444]:
+            - generic [ref=e445]: techradar
+            - generic [ref=e446]: Jun 23, 2026
+      - link "Next Buying Opportunity Nearing in Mining Stocks Looks Better Than Gold and Silver" [ref=e447] [cursor=pointer]:
+        - generic [ref=e449]:
+          - generic [ref=e450]:
+            - generic [ref=e451]: All
+            - button "Save article" [ref=e452]:
+              - img [ref=e453]
+          - heading "Next Buying Opportunity Nearing in Mining Stocks Looks Better Than Gold and Silver" [level=3] [ref=e455]
+          - paragraph [ref=e456]: "Market Analysis by covering: Gold Spot US Dollar, Silver Spot US Dollar, VanEck Gold Miners ETF. Read 's Market Analysis on Investing.com"
+          - generic [ref=e457]:
+            - generic [ref=e458]: investing_us
+            - generic [ref=e459]: Jun 23, 2026
+      - link "DHI Group (NYSE:DHX) Stock Passes Above 200-Day Moving Average – Should You Sell?" [ref=e460] [cursor=pointer]:
+        - generic [ref=e462]:
+          - generic [ref=e463]:
+            - generic [ref=e464]: All
+            - button "Save article" [ref=e465]:
+              - img [ref=e466]
+          - heading "DHI Group (NYSE:DHX) Stock Passes Above 200-Day Moving Average – Should You Sell?" [level=3] [ref=e468]
+          - paragraph [ref=e469]: DHI Group, Inc. (NYSE:DHX – Get Free Report) shares crossed above its 200-day moving average during trading on Tuesday . The stock has a 200-day moving average of $2.57 and traded as high as $3.98. DHI Group shares last traded at $3.87, with a volume of 176,576 shares trading hands. Wall Street Analyst Weigh In [...]
+          - generic [ref=e470]:
+            - generic [ref=e471]: americanbankingnews
+            - generic [ref=e472]: Jun 23, 2026
+      - link "Dubai exchange to launch same-day gold contract, targeting safe-haven flows" [ref=e473] [cursor=pointer]:
+        - generic [ref=e475]:
+          - generic [ref=e476]:
+            - generic [ref=e477]: All
+            - button "Save article" [ref=e478]:
+              - img [ref=e479]
+          - heading "Dubai exchange to launch same-day gold contract, targeting safe-haven flows" [level=3] [ref=e481]
+          - paragraph [ref=e482]: Dubai's commodities exchange will launch a same-day settlement gold contract on Monday, its CEO told Reuters, aiming to tap safe-haven demand and faster trading infrastructure to boost liquidity in the emirate's bullion market. The Dubai Gold and Commodities Exchange (DGCX), part of the Dubai Multi Commodities Centre (DMCC), said shorter settlement cycles reflect broader market shifts toward speed and efficiency.
+          - generic [ref=e483]:
+            - generic [ref=e484]: miningweekly
+            - generic [ref=e485]: Jun 23, 2026
+      - 'link "The consensus view of fading the AI trade will be ''woefully wrong'': Portfolio manager" [ref=e486] [cursor=pointer]':
+        - generic [ref=e488]:
+          - generic [ref=e489]:
+            - generic [ref=e490]: All
+            - button "Save article" [ref=e491]:
+              - img [ref=e492]
+          - 'heading "The consensus view of fading the AI trade will be ''woefully wrong'': Portfolio manager" [level=3] [ref=e494]'
+          - paragraph [ref=e495]: David Wagner of Aptus Capital Advisors says the Fed and interest rates will start to play a bigger role in the markets, but ultimately AI remains the main driving force in the markets and it still has "a lot more legs moving forward".
+          - generic [ref=e496]:
+            - generic [ref=e497]: cnbc
+            - generic [ref=e498]: Jun 23, 2026
+      - link "FRP (NASDAQ:FRPH) Shares Cross Above 200 Day Moving Average – What’s Next?" [ref=e499] [cursor=pointer]:
+        - generic [ref=e501]:
+          - generic [ref=e502]:
+            - generic [ref=e503]: All
+            - button "Save article" [ref=e504]:
+              - img [ref=e505]
+          - heading "FRP (NASDAQ:FRPH) Shares Cross Above 200 Day Moving Average – What’s Next?" [level=3] [ref=e507]
+          - paragraph [ref=e508]: Shares of FRP Holdings, Inc. (NASDAQ:FRPH – Get Free Report) crossed above its 200-day moving average during trading on Tuesday . The stock has a 200-day moving average of $22.93 and traded as high as $24.65. FRP shares last traded at $24.55, with a volume of 58,559 shares trading hands. Wall Street Analysts Forecast Growth [...]
+          - generic [ref=e509]:
+            - generic [ref=e510]: americanbankingnews
+            - generic [ref=e511]: Jun 23, 2026
+      - link "Simulations Plus (NASDAQ:SLP) Stock Passes Above 200-Day Moving Average – Should You Sell?" [ref=e512] [cursor=pointer]:
+        - generic [ref=e514]:
+          - generic [ref=e515]:
+            - generic [ref=e516]: All
+            - button "Save article" [ref=e517]:
+              - img [ref=e518]
+          - heading "Simulations Plus (NASDAQ:SLP) Stock Passes Above 200-Day Moving Average – Should You Sell?" [level=3] [ref=e520]
+          - paragraph [ref=e521]: Simulations Plus, Inc. (NASDAQ:SLP – Get Free Report) shares crossed above its 200-day moving average during trading on Tuesday . The stock has a 200-day moving average of $15.56 and traded as high as $18.27. Simulations Plus shares last traded at $18.15, with a volume of 632,074 shares. Analysts Set New Price Targets SLP has [...]
+          - generic [ref=e522]:
+            - generic [ref=e523]: americanbankingnews
+            - generic [ref=e524]: Jun 23, 2026
+      - link "Stock Yards Bancorp (NASDAQ:SYBT) Stock Price Passes Above Two Hundred Day Moving Average – Time to Sell?" [ref=e525] [cursor=pointer]:
+        - generic [ref=e527]:
+          - generic [ref=e528]:
+            - generic [ref=e529]: All
+            - button "Save article" [ref=e530]:
+              - img [ref=e531]
+          - heading "Stock Yards Bancorp (NASDAQ:SYBT) Stock Price Passes Above Two Hundred Day Moving Average – Time to Sell?" [level=3] [ref=e533]
+          - paragraph [ref=e534]: Stock Yards Bancorp, Inc. (NASDAQ:SYBT – Get Free Report)’s stock price passed above its two hundred day moving average during trading on Tuesday . The stock has a two hundred day moving average of $68.75 and traded as high as $74.69. Stock Yards Bancorp shares last traded at $74.24, with a volume of 195,938 shares [...]
+          - generic [ref=e535]:
+            - generic [ref=e536]: americanbankingnews
+            - generic [ref=e537]: Jun 23, 2026
+    - navigation "Pagination" [ref=e538]:
+      - button "Page 1" [ref=e539]: "1"
+      - button "Page 2" [ref=e540] [cursor=pointer]: "2"
