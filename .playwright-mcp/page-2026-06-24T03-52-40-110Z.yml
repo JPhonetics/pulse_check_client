@@ -1,0 +1,86 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Tuesday, June 23, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Account menu for Demo" [ref=e550] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]: crime
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+      - button "Saved Articles" [ref=e551] [cursor=pointer]
+      - button "Saved Searches" [ref=e552] [cursor=pointer]
+    - button "Logout" [ref=e554] [cursor=pointer]
+  - main [ref=e435]:
+    - generic [ref=e436]:
+      - button "Save this search" [ref=e437] [cursor=pointer]:
+        - img [ref=e438]
+      - 'heading "Searching: crime" [level=1] [ref=e440]'
+    - generic [ref=e441]:
+      - generic [ref=e442]:
+        - generic [ref=e443]: "Date Range:"
+        - textbox "From date" [ref=e444] [cursor=pointer]
+        - generic [ref=e445]: —
+        - textbox "To date" [ref=e446] [cursor=pointer]
+      - button "Sort descending, click to toggle" [ref=e447] [cursor=pointer]:
+        - generic [ref=e448]: Descending
+        - img [ref=e449]
+    - generic [ref=e451]:
+      - link "Interpol Dismantles Multinational Cybercrime Ring Targeting Banks" [ref=e452] [cursor=pointer]:
+        - generic [ref=e454]:
+          - generic [ref=e455]:
+            - generic [ref=e456]: Crime
+            - button "Save article" [ref=e457]:
+              - img [ref=e458]
+          - heading "Interpol Dismantles Multinational Cybercrime Ring Targeting Banks" [level=3] [ref=e460]
+          - paragraph [ref=e461]: Authorities across 14 countries coordinated simultaneous raids, arresting 38 suspects linked to a sophisticated cybercrime operation that stole an estimated $200 million from financial institutions over three years.
+          - generic [ref=e462]:
+            - generic [ref=e463]: BBC News
+            - generic [ref=e464]: Jun 22, 2026
+      - link "UN Report Warns of Rising Transnational Drug Trafficking Networks" [ref=e465] [cursor=pointer]:
+        - generic [ref=e467]:
+          - generic [ref=e468]:
+            - generic [ref=e469]: Crime
+            - button "Save article" [ref=e470]:
+              - img [ref=e471]
+          - heading "UN Report Warns of Rising Transnational Drug Trafficking Networks" [level=3] [ref=e473]
+          - paragraph [ref=e474]: The United Nations Office on Drugs and Crime released its annual report citing a 23% increase in cross-border narcotics trafficking, driven largely by new synthetic drug supply chains through Southeast Asia.
+          - generic [ref=e475]:
+            - generic [ref=e476]: AP News
+            - generic [ref=e477]: Jun 20, 2026

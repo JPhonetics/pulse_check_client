@@ -1,0 +1,221 @@
+.header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--color-navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Top bar ─────────────────────────────────────────────── */
+
+.topBar {
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  gap: var(--space-4);
+  min-height: 44px;
+}
+
+.topLeft,
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.topRight {
+  justify-content: flex-end;
+}
+
+.topCenter {
+  flex: 0 1 auto;
+}
+
+.menuBtn {
+  color: var(--nav-text);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+  line-height: 0;
+}
+
+.menuBtn:hover {
+  opacity: 0.8;
+}
+
+.date {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+}
+
+.locationBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.locationBtn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.donateBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 0.03em;
+  color: var(--color-white);
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.donateBtn:hover {
+  background: var(--accent-hover);
+}
+
+.userWrap {
+  position: relative;
+}
+
+.userBtn {
+  color: rgba(255,255,255,0.85);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  line-height: 0;
+  transition: color var(--transition-fast);
+}
+
+.userBtn:hover,
+.userBtn.loggedIn {
+  color: var(--color-white);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 180px;
+  overflow: hidden;
+  z-index: 200;
+}
+
+.dropdownUser {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dropdownUser strong {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.dropdownUser small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.dropdownItem:hover {
+  background: var(--color-gray-100);
+}
+
+/* ── Logo row ──────────────────────────────────────────────── */
+
+.logoRow {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  cursor: pointer;
+}
+
+/* ── Nav row ───────────────────────────────────────────────── */
+
+.navRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-gray-100);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-2);
+  transition: border-color var(--transition-fast);
+}
+
+.searchForm:focus-within {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.searchIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 0.85rem;
+  color: var(--text);
+  width: 140px;
+}
+
+.searchInput::placeholder {
+  color: var(--color-gray-400);
+}
+
+.searchInput::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}

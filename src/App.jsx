@@ -1,122 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useCallback } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/layout/Header';
+import Sidebar from './components/layout/Sidebar';
+import AuthModal from './components/modals/AuthModal';
+import LocalRegionModal from './components/modals/LocalRegionModal';
+import UpdateProfileModal from './components/modals/UpdateProfileModal';
+import DonateModal from './components/modals/DonateModal';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
+import SavedArticlesPage from './pages/SavedArticlesPage';
+import SavedSearchesPage from './pages/SavedSearchesPage';
+import ErrorPage from './pages/ErrorPage';
+import PasswordResetPage from './pages/PasswordResetPage';
+import VerifyEmailPage from './pages/VerifyEmailPage';
+import ProtectedRoute from './router/ProtectedRoute';
+import { useAuth } from './contexts/AuthContext';
 
-function App() {
-  const [count, setCount] = useState(0)
+function AboutPage() {
+  return (
+    <main style={{ flex: 1, padding: '48px 24px', maxWidth: 640, margin: '0 auto' }}>
+      <h1 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-navy)', fontSize: '2rem', fontWeight: 800, marginBottom: 16 }}>About Us</h1>
+      <p style={{ lineHeight: 1.7, color: 'var(--text)', marginBottom: 12 }}>
+        Pulse Check is your daily pulse on the world — a curated news aggregator bringing you top headlines from around the globe, across the United States, and in your local community.
+      </p>
+      <p style={{ lineHeight: 1.7, color: 'var(--text)' }}>
+        Browse by region and topic, save articles and searches, and stay informed with a clean, distraction-free reading experience.
+      </p>
+    </main>
+  );
+}
+
+// modal names: null | 'auth' | 'location' | 'donate' | 'profile'
+export default function App() {
+  const { user } = useAuth();
+  const [region, setRegion] = useState('World');
+  const [category, setCategory] = useState('All');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [modal, setModal] = useState(null);
+  const [authHint, setAuthHint] = useState('');
+  const [authInitScreen, setAuthInitScreen] = useState('login');
+
+  const closeModal = useCallback(() => { setModal(null); setAuthHint(''); }, []);
+
+  const handleRegionChange = useCallback((r) => {
+    setRegion(r);
+    setCategory('All');
+  }, []);
+
+  const handleAuthRequired = useCallback((context) => {
+    if (context === 'profile') {
+      setModal('profile');
+    } else {
+      setAuthHint(typeof context === 'string' && context !== 'profile' ? context : '');
+      setAuthInitScreen('login');
+      setModal('auth');
+    }
+  }, []);
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <Header
+        region={region}
+        onRegionChange={handleRegionChange}
+        category={category}
+        onCategoryChange={setCategory}
+        onMenuToggle={() => setSidebarOpen(true)}
+        onAuthRequired={handleAuthRequired}
+        onLocationEdit={() => setModal('location')}
+        onDonate={() => setModal('donate')}
+      />
 
-      <div className="ticks"></div>
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              region={region}
+              category={category}
+              onAuthRequired={() => { setAuthHint('Log in to save articles.'); setModal('auth'); }}
+            />
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <SearchPage
+              onAuthRequired={(hint) => { setAuthHint(hint || ''); setModal('auth'); }}
+            />
+          }
+        />
+        <Route path="/saved-articles" element={<ProtectedRoute><SavedArticlesPage /></ProtectedRoute>} />
+        <Route path="/saved-searches" element={<ProtectedRoute><SavedSearchesPage /></ProtectedRoute>} />
+        <Route path="/password-reset/:token" element={<PasswordResetPage />} />
+        <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {modal === 'auth' && !user && (
+        <AuthModal
+          onClose={closeModal}
+          initialScreen={authInitScreen}
+          hint={authHint}
+        />
+      )}
+      {modal === 'location' && (
+        <LocalRegionModal onClose={closeModal} />
+      )}
+      {modal === 'profile' && user && (
+        <UpdateProfileModal onClose={closeModal} />
+      )}
+      {modal === 'donate' && (
+        <DonateModal onClose={closeModal} />
+      )}
     </>
-  )
+  );
 }
-
-export default App

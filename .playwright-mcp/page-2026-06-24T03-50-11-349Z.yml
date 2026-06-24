@@ -1,0 +1,160 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Tuesday, June 23, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Set Location
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "US Headlines" [level=1] [ref=e183]
+    - generic [ref=e62]:
+      - link "Fed Holds Rates Steady, Projects Two Cuts in 2026 Outlook" [ref=e184] [cursor=pointer]:
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - generic [ref=e188]: Business
+            - button "Save article" [ref=e189]:
+              - img [ref=e190]
+          - heading "Fed Holds Rates Steady, Projects Two Cuts in 2026 Outlook" [level=3] [ref=e192]
+          - paragraph [ref=e193]: The Federal Reserve voted unanimously to hold the federal funds rate at 4.75–5.00% at its June meeting, releasing updated projections indicating two quarter-point cuts before year-end pending continued progress on inflation.
+          - generic [ref=e194]:
+            - generic [ref=e195]: CNBC
+            - generic [ref=e196]: Jun 23, 2026
+      - link "CDC Issues Advisory After Multistate Listeria Outbreak Linked to Deli Meat" [ref=e197] [cursor=pointer]:
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - generic [ref=e201]: Health
+            - button "Save article" [ref=e202]:
+              - img [ref=e203]
+          - heading "CDC Issues Advisory After Multistate Listeria Outbreak Linked to Deli Meat" [level=3] [ref=e205]
+          - paragraph [ref=e206]: The Centers for Disease Control and Prevention issued a nationwide health advisory following a listeria outbreak linked to packaged deli meats from a Tennessee-based processor, with 34 hospitalizations reported across 12 states.
+          - generic [ref=e207]:
+            - generic [ref=e208]: NBC News
+            - generic [ref=e209]: Jun 23, 2026
+      - link "NOAA Forecasts Above-Average Hurricane Season; Gulf Coast on Alert" [ref=e210] [cursor=pointer]:
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]: Weather
+            - button "Save article" [ref=e215]:
+              - img [ref=e216]
+          - heading "NOAA Forecasts Above-Average Hurricane Season; Gulf Coast on Alert" [level=3] [ref=e218]
+          - paragraph [ref=e219]: NOAA's latest seasonal outlook calls for 19 to 23 named storms, 9 to 12 of which are expected to become hurricanes. Forecasters cite record-warm Atlantic sea surface temperatures as the primary driver of elevated activity.
+          - generic [ref=e220]:
+            - generic [ref=e221]: Weather.com
+            - generic [ref=e222]: Jun 23, 2026
+      - 'link "NBA Finals: Celtics Force Game 7 With Stunning Fourth-Quarter Comeback" [ref=e223] [cursor=pointer]':
+        - generic [ref=e225]:
+          - generic [ref=e226]:
+            - generic [ref=e227]: Sports
+            - button "Save article" [ref=e228]:
+              - img [ref=e229]
+          - 'heading "NBA Finals: Celtics Force Game 7 With Stunning Fourth-Quarter Comeback" [level=3] [ref=e231]'
+          - paragraph [ref=e232]: The Boston Celtics erased a 17-point fourth-quarter deficit to defeat the Denver Nuggets 108-104 in Game 6, forcing a winner-take-all Game 7 at TD Garden on Thursday night in a series most had considered over.
+          - generic [ref=e233]:
+            - generic [ref=e234]: ESPN
+            - generic [ref=e235]: Jun 22, 2026
+      - link "Senate Passes Bipartisan Infrastructure Maintenance Act" [ref=e236] [cursor=pointer]:
+        - generic [ref=e238]:
+          - generic [ref=e239]:
+            - generic [ref=e240]: Politics
+            - button "Save article" [ref=e241]:
+              - img [ref=e242]
+          - heading "Senate Passes Bipartisan Infrastructure Maintenance Act" [level=3] [ref=e244]
+          - paragraph [ref=e245]: The Senate voted 67-33 to pass the Infrastructure Maintenance and Modernization Act, a $380 billion package for bridge and road repairs, broadband expansion, and water system upgrades, now heading to the President's desk.
+          - generic [ref=e246]:
+            - generic [ref=e247]: Politico
+            - generic [ref=e248]: Jun 22, 2026
+      - link "FBI Arrests Seven in Major Election Infrastructure Cyberattack Plot" [ref=e249] [cursor=pointer]:
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - generic [ref=e253]: Crime
+            - button "Save article" [ref=e254]:
+              - img [ref=e255]
+          - heading "FBI Arrests Seven in Major Election Infrastructure Cyberattack Plot" [level=3] [ref=e257]
+          - paragraph [ref=e258]: Federal agents arrested seven individuals in a coordinated operation targeting a sophisticated cyberattack ring that allegedly attempted to compromise voter registration systems in four swing states ahead of November elections.
+          - generic [ref=e259]:
+            - generic [ref=e260]: Washington Post
+            - generic [ref=e261]: Jun 22, 2026
+      - link "Silicon Valley Layoffs Continue as AI Reshapes Workforce Demand" [ref=e262] [cursor=pointer]:
+        - generic [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]: Tech
+            - button "Save article" [ref=e267]:
+              - img [ref=e268]
+          - heading "Silicon Valley Layoffs Continue as AI Reshapes Workforce Demand" [level=3] [ref=e270]
+          - paragraph [ref=e271]: Several major tech companies announced additional rounds of layoffs totaling over 12,000 positions this week, as executives cite AI-driven automation in software development, content moderation, and customer support roles.
+          - generic [ref=e272]:
+            - generic [ref=e273]: TechCrunch
+            - generic [ref=e274]: Jun 22, 2026
+      - link "Emmy Awards Nominations Dominated by Streaming Giants" [ref=e275] [cursor=pointer]:
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e279]: Entertainment
+            - button "Save article" [ref=e280]:
+              - img [ref=e281]
+          - heading "Emmy Awards Nominations Dominated by Streaming Giants" [level=3] [ref=e283]
+          - paragraph [ref=e284]: Netflix and HBO Max secured 47 and 41 Emmy nominations respectively, crowding out legacy networks, with 'The Last Chronicle' leading all programs at 23 nominations including Outstanding Drama Series.
+          - generic [ref=e285]:
+            - generic [ref=e286]: Hollywood Reporter
+            - generic [ref=e287]: Jun 22, 2026
+      - link "DEA Seizes Record Fentanyl Shipment at Southern Border" [ref=e288] [cursor=pointer]:
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - generic [ref=e292]: Crime
+            - button "Save article" [ref=e293]:
+              - img [ref=e294]
+          - heading "DEA Seizes Record Fentanyl Shipment at Southern Border" [level=3] [ref=e296]
+          - paragraph [ref=e297]: US Drug Enforcement Administration agents seized more than 4.8 million fentanyl pills and 200 kilograms of powder in a record interdiction at the Arizona-Mexico border, the largest such seizure in agency history.
+          - generic [ref=e298]:
+            - generic [ref=e299]: ABC News
+            - generic [ref=e300]: Jun 21, 2026
+    - navigation "Pagination" [ref=e180]:
+      - button "Page 1" [ref=e181]: "1"
+      - button "Page 2" [ref=e182] [cursor=pointer]: "2"
+  - dialog "Set local region" [ref=e302]:
+    - button "Close" [ref=e303] [cursor=pointer]:
+      - img [ref=e304]
+    - heading "Set your local region" [level=2] [ref=e306]
+    - paragraph [ref=e307]: Enter a city, state, or ZIP code
+    - generic [ref=e308]:
+      - textbox "Location search" [active] [ref=e310]:
+        - /placeholder: e.g. Los Angeles, CA
+      - button "Submit" [disabled] [ref=e311]

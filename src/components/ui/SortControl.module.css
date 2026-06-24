@@ -1,0 +1,29 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  background: var(--color-gray-100);
+}
+
+.label {
+  color: var(--text-muted);
+  margin-right: var(--space-1);
+}
+
+.direction {
+  font-weight: 600;
+}

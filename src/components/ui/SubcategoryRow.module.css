@@ -1,0 +1,31 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.chip {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.chip:hover {
+  color: var(--text);
+  background: var(--color-gray-100);
+}
+
+.chip.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(196, 30, 58, 0.06);
+  font-weight: 600;
+}

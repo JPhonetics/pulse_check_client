@@ -1,0 +1,41 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--color-white);
+  font-weight: 700;
+  cursor: default;
+}
+
+.ellipsis {
+  color: var(--text-muted);
+  padding: 0 var(--space-1);
+  font-size: 0.9rem;
+  user-select: none;
+}
