@@ -13,11 +13,24 @@ npm run lint       # ESLint
 
 No test runner is configured yet.
 
+## Environment Variables
+
+Copy `.env.example` to `.env` and fill in values before running:
+
+```
+VITE_SUPABASE_URL=https://your-project-id.supabase.co/rest/v1
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_NEWSDATA_API_KEY=your_newsdata_io_api_key
+VITE_TEST_USER_ID=uuid_of_manually_inserted_test_user   # temporary; removed when real auth is wired
+```
+
 ## Project Overview
 
 **Pulse Check** is a news aggregator ("Your daily pulse on the world."). Users browse headlines by region (World / US / Local) and topic sub-category, search across all articles, and — when registered — save articles and searches.
 
-The frontend is React 19 + React Router v7, bundled with Vite 8. **Stage 1 (mock data + mock auth) is complete.** Stage 2 will wire up a real backend API and auth service.
+The frontend is React 19 + React Router v7, bundled with Vite 8.
+
+**Current state (hybrid):** Article fetching and saved-content operations use real Supabase + newsdata.io APIs. Auth is still the in-memory mock from Stage 1. `SavedContext` uses `VITE_TEST_USER_ID` as a placeholder `user_id` until real auth is wired in.
 
 ## Product Spec
 
@@ -44,8 +57,8 @@ BrowserRouter > AuthProvider > LocationProvider > SavedProvider > App
 
 - **`AuthContext`** — `user` (null = guest), `login`, `register`, `logout`, `updateProfile`, `updatePassword`
 - **`LocationContext`** — `localRegion` string (persisted to `localStorage` under key `pc_local_region`), `setLocalRegion`
-- **`SavedContext`** — in-memory `savedArticleIds` (Set) and `savedSearches` (array); not yet persisted
-  - Full API: `toggleSaveArticle(id)`, `isArticleSaved(id)`, `saveSearch(query)`, `unsaveSearch(id)`, `isSearchSaved(query)`, `getSavedSearchId(query)`
+- **`SavedContext`** — persisted to Supabase via `savedArticleService` / `savedSearchService`; uses optimistic updates with rollback on error
+  - Full API: `toggleSaveArticle(article)`, `isArticleSaved(id)`, `savedArticles`, `savedArticleIds` (Set), `saveSearch(query, dateFrom, dateTo)`, `unsaveSearch(id)`, `isSearchSaved(query)`, `getSavedSearchId(query)`, `savedSearches`
 
 ### Modal State (`src/App.jsx`)
 
@@ -57,25 +70,27 @@ All modals are managed in `App` via a single `modal` state: `null | 'auth' | 'lo
 
 ### Services (`src/services/`)
 
-All service modules expose stable async function signatures. Stage 1 internals are mocks; replace internals only in Stage 2 — callers do not change.
+All service modules expose stable async function signatures. Replace internals in Stage 2 — callers do not change.
 
-- **`articlesService.js`** — `getArticles`, `searchArticles`, `getArticlesByIds`; reads from `src/data/articles.json`
-- **`authService.js`** — `login`, `register`, `requestPasswordReset`, `validateResetToken`, `setNewPassword`, `updateProfile`, `updatePassword`; in-memory accounts, seed: `demo@example.com / password`. In mock mode, any token passed to `validateResetToken` is valid **except** the literal string `'expired'` — navigate to `/password-reset/expired` to exercise the expired-token UI.
+- **`http.js`** — exports two pre-configured axios instances: `supabaseHttp` (Supabase REST with `apikey` + `Authorization` headers) and `newsdataHttp` (newsdata.io base URL).
+- **`articlesService.js`** — re-exports `getArticles` and `searchArticles` from `newsService.js`; `getArticlesByIds` is retired (returns empty).
+- **`newsService.js`** — real implementation: `getArticles` fetches from newsdata.io and caches results in the Supabase `article_cache` table (15-min TTL); Local region always fetches live with city keyword and falls back to state if < 1 page of results. `searchArticles` queries `article_cache` via Supabase (does not call newsdata.io). Both are async.
+- **`savedArticleService.js`** — `getSavedArticles`, `saveArticle`, `unsaveArticle`; reads/writes Supabase `saved_article` table.
+- **`savedSearchService.js`** — `getSavedSearches`, `saveSearch`, `unsaveSearch`; reads/writes Supabase `saved_search` table.
+- **`authService.js`** — **still mock**: in-memory accounts, seed: `demo@example.com / password`. Replace internals in Stage 2 — function signatures stay the same. Any token passed to `validateResetToken` is valid **except** the literal string `'expired'` — navigate to `/password-reset/expired` to exercise the expired-token UI.
 - **`paymentService.js`** — `initiateDonation({ amount })`; stub returning `{ ok: true, stub: true }`
 
-**Stage 1 note**: `getArticles` / `searchArticles` / `getArticlesByIds` are currently synchronous (they read a local JSON import), so their callers use `useMemo` rather than `useEffect`+`useState`. Stage 2 will need to change callers to async data-fetching when the service internals become real `fetch` calls.
+### Article Data Shape
 
-### Article Data Shape (`src/data/articles.json`)
-
-Each article object has these fields — the contract between the service layer and all UI components:
+Each article object in the app has these fields — the contract between the service layer and all UI components:
 
 ```
-id          string   e.g. "w-biz-1"
-region      string   "World" | "US" | "Local"
+id          string   e.g. "reuters-abc123"
+region      string   "World" | "US" | "Local" | "Saved" | "Search"
 category    string   e.g. "Business"
 title       string
 publishDate string   ISO 8601
-source      string   e.g. "Reuters"
+source      string   e.g. "reuters"
 snippet     string   short description
 imageUrl    string   URL
 url         string   source article URL (opened in new tab on card click)
@@ -124,14 +139,16 @@ Each component has a co-located `.module.css` file (CSS Modules). Global design 
 - `app_outline/` contains wireframes (PNG) and the product spec — not shipped to production.
 - `src/data/locations.js` exports `searchLocations(query)` for the Local Region type-ahead (static list of ~80 US cities).
 
-## Stage 2 Upgrade Checklist
+## Stage 2 Remaining Work
 
-When connecting a real backend:
+What's done vs. still needed to complete the real-backend wiring:
 
-1. Replace `authService.js` internals — function signatures stay the same
-2. Replace `articlesService.js` internals — switch `getArticles`/`searchArticles` to fetch calls; update callers from `useMemo` to `useEffect`+`useState` (currently synchronous)
-3. Replace `paymentService.js` `initiateDonation` with Stripe Checkout redirect
-4. Persist `SavedContext` state to the backend (currently in-memory only)
-5. `LocationContext` already persists to `localStorage` — no change needed
-6. `axios` is already installed as a dependency — use it for API calls in service modules
-7. `app_outline/db_schema.sql` contains the planned database schema for reference
+| Item | Status |
+|---|---|
+| `newsService.js` — real newsdata.io + Supabase article cache | Done |
+| `savedArticleService.js` / `savedSearchService.js` — real Supabase | Done |
+| `SavedContext` — persisted to Supabase with optimistic updates | Done |
+| `authService.js` — replace mock with real auth backend | Remaining |
+| Wire `SavedContext` to real `user.id` (remove `VITE_TEST_USER_ID`) | Remaining |
+| `paymentService.js` — replace stub with Stripe Checkout redirect | Remaining |
+| `LocationContext` — sync local region to user profile on login | Remaining |
