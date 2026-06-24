@@ -1,0 +1,118 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Wednesday, June 24, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [active] [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Latest Headlines" [level=1] [ref=e61]
+    - generic [ref=e63]:
+      - link "Google Turns to CO2 Battery Storage as Data Center Demand Tests Renewable Energy Limits" [ref=e64] [cursor=pointer]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: All
+            - button "Save article" [ref=e69]:
+              - img [ref=e70]
+          - heading "Google Turns to CO2 Battery Storage as Data Center Demand Tests Renewable Energy Limits" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Google and Italian energy storage developer Energy Dome are advancing a 23 MW/200 MWh carbon dioxide battery project in County Offaly, Ireland, aimed at demonstrating how long duration energy storage (LDES) can support renewable heavy grids.
+          - generic [ref=e74]:
+            - generic [ref=e75]: energynews_biz
+            - generic [ref=e76]: Jun 23, 2026
+      - link "Tamadi and Akain best at Junior TT Nationals" [ref=e77] [cursor=pointer]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]: All
+            - button "Save article" [ref=e82]:
+              - img [ref=e83]
+          - heading "Tamadi and Akain best at Junior TT Nationals" [level=3] [ref=e85]
+          - paragraph [ref=e86]: The Junior National Table Tennis Championship organised by the Table Tennis Association of Sri Lanka (TTASL) concluded at the Kandy Indoor Stadium, with several young paddlers delivering outstanding performances across
+          - generic [ref=e87]:
+            - generic [ref=e88]: dailymirror
+            - generic [ref=e89]: Jun 23, 2026
+      - 'link "Flipkart GOAT Sale 2026 Starts July 4: Top Smartphone Deals Teased From POCO C85x to iPhone 17" [ref=e90] [cursor=pointer]':
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]: All
+            - button "Save article" [ref=e95]:
+              - img [ref=e96]
+          - 'heading "Flipkart GOAT Sale 2026 Starts July 4: Top Smartphone Deals Teased From POCO C85x to iPhone 17" [level=3] [ref=e98]'
+          - paragraph [ref=e99]: Flipkart has teased 9 phones for its GOAT Sale starting July 4, from the iPhone 17 to the POCO C85x. Here are the verified specs and what to expect.
+          - generic [ref=e100]:
+            - generic [ref=e101]: gizbot
+            - generic [ref=e102]: Jun 23, 2026
+      - 'link "Punjab Police Constable Admit Card 2026 out: Check direct link and steps to download" [ref=e103] [cursor=pointer]':
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - generic [ref=e107]: All
+            - button "Save article" [ref=e108]:
+              - img [ref=e109]
+          - 'heading "Punjab Police Constable Admit Card 2026 out: Check direct link and steps to download" [level=3] [ref=e111]'
+          - paragraph [ref=e112]: The Punjab Police Department has released the Constable Admit Card 2026 for the upcoming recruitment examination. Candidates can download their hall tickets online for the Computer-Based Test commencing July 1, 2026. This drive aims to fill 3,298 vacancies. Ensure you carry a printed admit card and valid ID to the exam center. Check all details carefully upon downloading
+          - generic [ref=e113]:
+            - generic [ref=e114]: toi
+            - generic [ref=e115]: Jun 23, 2026
+      - link "Ritabrata Banerjee's Faction Moves EC, Stake Claim as ‘Real TMC’" [ref=e116] [cursor=pointer]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e120]: All
+            - button "Save article" [ref=e121]:
+              - img [ref=e122]
+          - heading "Ritabrata Banerjee's Faction Moves EC, Stake Claim as ‘Real TMC’" [level=3] [ref=e124]
+          - paragraph [ref=e125]: The move from Ritabrata Banerjee's camp has triggered a dispute over the party’s name, assets, and election symbol.
+          - generic [ref=e126]:
+            - generic [ref=e127]: outlookindia
+            - generic [ref=e128]: Jun 23, 2026
+  - dialog [ref=e130]:
+    - button "Close" [ref=e131] [cursor=pointer]:
+      - img [ref=e132]
+    - generic [ref=e134]:
+      - button "Login" [ref=e135] [cursor=pointer]
+      - button "Register" [ref=e136] [cursor=pointer]
+    - generic [ref=e137]:
+      - textbox "Email" [ref=e139]
+      - generic [ref=e141]:
+        - textbox "Password" [ref=e142]
+        - button "Show password" [ref=e143] [cursor=pointer]:
+          - img [ref=e144]
+      - button "Password Reset" [ref=e147] [cursor=pointer]
+      - button "Submit" [ref=e148] [cursor=pointer]

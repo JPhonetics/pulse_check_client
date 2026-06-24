@@ -1,23 +1,45 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PasswordInput from '../components/ui/PasswordInput';
 import Logo from '../components/layout/Logo';
+import { supabase } from '../services/supabaseClient';
 import * as authService from '../services/authService';
 import styles from './PasswordResetPage.module.css';
 
 export default function PasswordResetPage() {
-  const { token } = useParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState('checking'); // 'checking' | 'valid' | 'expired' | 'success'
+  // 'checking' | 'valid' | 'expired' | 'success'
+  const [status, setStatus] = useState('checking');
   const [form, setForm] = useState({ password: '', confirm: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    authService.validateResetToken(token).then(result => {
-      setStatus(result.expired ? 'expired' : 'valid');
+    // Supabase processes the hash fragment automatically and fires PASSWORD_RECOVERY.
+    // We also check the current session in case the page loaded after the event fired.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY' && session) {
+        setStatus('valid');
+      }
     });
-  }, [token]);
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (status === 'checking') {
+        const hash = window.location.hash;
+        // If the session exists AND the URL hash indicates a recovery flow, show the form.
+        if (session && hash.includes('type=recovery')) {
+          setStatus('valid');
+        } else if (!hash.includes('access_token')) {
+          // Direct navigation with no token — treat as expired/invalid.
+          setStatus('expired');
+        }
+        // Otherwise keep 'checking' and let onAuthStateChange resolve it.
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -27,8 +49,11 @@ export default function PasswordResetPage() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setLoading(true);
-    await authService.setNewPassword({ token, password: form.password });
+    const result = await authService.setNewPassword({ password: form.password });
     setLoading(false);
+    if (!result.ok) { setErrors({ password: result.error }); return; }
+    // Sign out after password reset so the recovery session is consumed.
+    await supabase.auth.signOut();
     setStatus('success');
   }
 

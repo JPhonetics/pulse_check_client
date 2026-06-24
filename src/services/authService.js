@@ -1,96 +1,90 @@
-// ─── Mock Auth Service ────────────────────────────────────────────────────────
-// All state is in-memory. Replace the internals of this module with real API
-// calls in Stage 2 (real auth backend). The exported function signatures stay
-// the same — callers don't change.
+import { supabase } from './supabaseClient';
+import { supabaseHttp } from './http';
 
-// Seed account so the demo works out of the box
-const MOCK_ACCOUNTS = [
-  { email: 'demo@example.com', password: 'password', firstName: 'Demo' },
-];
-
-// ─── Public API ───────────────────────────────────────────────────────────────
-
-/**
- * @returns {{ ok: boolean, user?: Object, error?: string }}
- */
 export async function login({ email, password }) {
-  await delay(400);
-  const account = MOCK_ACCOUNTS.find(
-    a => a.email.toLowerCase() === email.toLowerCase() && a.password === password
-  );
-  if (!account) {
-    return { ok: false, error: 'Invalid email or password.' };
-  }
-  return { ok: true, user: { email: account.email, firstName: account.firstName } };
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) return { ok: false, error: 'Invalid email or password.' };
+  const u = data.user;
+  return { ok: true, user: { id: u.id, email: u.email, firstName: u.user_metadata?.first_name || '' } };
 }
 
-/**
- * @returns {{ ok: boolean, error?: string }}
- */
 export async function register({ firstName, email, password }) {
-  await delay(400);
-  const exists = MOCK_ACCOUNTS.find(a => a.email.toLowerCase() === email.toLowerCase());
-  if (exists) {
-    return { ok: false, error: 'An account with that email already exists.' };
-  }
-  MOCK_ACCOUNTS.push({ firstName, email, password });
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { first_name: firstName },
+      emailRedirectTo: `${window.location.origin}/verify-email`,
+    },
+  });
+  if (error) return { ok: false, error: error.message };
   return { ok: true };
 }
 
-/**
- * Always succeeds in mock mode — avoids leaking whether the email is registered.
- */
+export async function resendVerification({ email }) {
+  const { error } = await supabase.auth.resend({ type: 'signup', email });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+// Always returns ok — neutral wording avoids revealing whether the email is registered.
 export async function requestPasswordReset({ email }) {
-  await delay(400);
+  await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/password-reset`,
+  });
   return { ok: true, email };
 }
 
-/**
- * In mock mode any token except 'expired' is treated as valid.
- * @returns {{ ok: boolean, expired: boolean }}
- */
-export async function validateResetToken(token) {
-  await delay(200);
-  if (token === 'expired') return { ok: false, expired: true };
-  return { ok: true, expired: false };
-}
-
-/**
- * @returns {{ ok: boolean, error?: string }}
- */
-export async function setNewPassword({ token: _token, password: _password }) {
-  await delay(400);
+export async function setNewPassword({ password }) {
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) return { ok: false, error: error.message };
   return { ok: true };
 }
 
-/**
- * @returns {{ ok: boolean, error?: string }}
- */
 export async function updateProfile({ user, firstName, email }) {
-  await delay(400);
-  const account = MOCK_ACCOUNTS.find(a => a.email.toLowerCase() === user.email.toLowerCase());
-  if (account) {
-    account.firstName = firstName;
-    account.email = email;
+  const updates = {};
+  if (firstName !== user.firstName) updates.data = { first_name: firstName };
+  if (email !== user.email) updates.email = email;
+
+  const { error } = await supabase.auth.updateUser(updates);
+  if (error) return { ok: false, error: error.message };
+
+  // Keep public.user.first_name in sync (the DB trigger only runs on INSERT).
+  if (firstName !== user.firstName) {
+    try {
+      await supabaseHttp.patch(`/user?id=eq.${user.id}`, { first_name: firstName });
+    } catch {
+      // Non-fatal — auth metadata is the UI source of truth.
+    }
   }
-  return { ok: true, user: { ...user, firstName, email } };
+
+  return { ok: true, emailChanged: email !== user.email };
 }
 
-/**
- * @returns {{ ok: boolean, error?: string }}
- */
-export async function updatePassword({ user, oldPassword, newPassword: _newPassword }) {
-  await delay(400);
-  const account = MOCK_ACCOUNTS.find(a => a.email.toLowerCase() === user.email.toLowerCase());
-  if (!account || account.password !== oldPassword) {
-    return { ok: false, error: 'Current password is incorrect.' };
-  }
-  account.password = _newPassword;
+export async function updatePassword({ user, oldPassword, newPassword }) {
+  // Verify old password by re-authenticating before changing.
+  const { error: signInError } = await supabase.auth.signInWithPassword({
+    email: user.email,
+    password: oldPassword,
+  });
+  if (signInError) return { ok: false, error: 'Current password is incorrect.' };
+
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  if (error) return { ok: false, error: error.message };
   return { ok: true };
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+export async function logout() {
+  await supabase.auth.signOut();
+  return { ok: true };
+}
 
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+export async function fetchUserProfile(userId) {
+  const { data } = await supabaseHttp.get(`/user?id=eq.${userId}&select=local_city,local_state`);
+  return data?.[0] || null;
+}
+
+export async function saveLocalRegionToProfile(userId, city, state) {
+  await supabaseHttp.patch(`/user?id=eq.${userId}`, { local_city: city, local_state: state });
+  return { ok: true };
 }

@@ -27,8 +27,12 @@ export default function UpdateProfileModal({ onClose }) {
     setLoading(true);
     const result = await updateProfile({ firstName: profileForm.firstName, email: profileForm.email });
     setLoading(false);
-    if (result.ok) setSuccess('Profile updated successfully.');
-    else setError(result.error || 'Something went wrong.');
+    if (!result.ok) { setError(result.error || 'Something went wrong.'); return; }
+    if (result.emailChanged) {
+      setSuccess(`A confirmation email has been sent to ${profileForm.email}. Your email will update after you verify it.`);
+    } else {
+      setSuccess('Profile updated successfully.');
+    }
   }, [updateProfile, profileForm]);
 
   const handlePasswordSubmit = useCallback(async (e) => {
