@@ -17,7 +17,7 @@ No test runner is configured yet.
 
 **Pulse Check** is a news aggregator ("Your daily pulse on the world."). Users browse headlines by region (World / US / Local) and topic sub-category, search across all articles, and — when registered — save articles and searches.
 
-The frontend is React 19 + React Router v7, bundled with Vite 8. The codebase is at the bootstrapped template stage; `src/App.jsx` is still the default Vite starter. All feature work is ahead.
+The frontend is React 19 + React Router v7, bundled with Vite 8. **Stage 1 (mock data + mock auth) is complete.** Stage 2 will wire up a real backend API and auth service.
 
 ## Product Spec
 
@@ -26,7 +26,7 @@ The frontend is React 19 + React Router v7, bundled with Vite 8. The codebase is
 - **Article cards**: image, category, title, publish date, source, snippet. Save flag (bookmark) top-right. Clicking card body opens source in new tab.
 - **Pagination**: numbered pages of 9 (3 × 3) across all paginated views.
 - **Regions**: World / US / Local (Local requires a set location; triggers Set Local Region popup if unset).
-- **Sub-categories**: All, Business, Crime, Entertainment, Health, Politics, Sports, Tech, Weather.
+- **Sub-categories**: All, Business, Crime, Entertainment, Health, Politics, Sports, Tech, Weather (defined in `src/components/ui/subcategories.js`).
 - **Search**: searches title/description across all regions/sub-categories; mutually exclusive with active region/sub-category filtering (switching to a region tab exits search).
 - **Guest vs. registered**: guests can browse and set a local region (stored in browser); registered users can also save articles and searches.
 - **Donate button**: Stripe-powered donation flow (on every page in the header).
@@ -34,63 +34,95 @@ The frontend is React 19 + React Router v7, bundled with Vite 8. The codebase is
 
 Wireframes for every screen live in `app_outline/pages/` as PNGs. Consult them alongside the spec when building UI.
 
-## Architecture Notes
+## Architecture
 
-- `src/main.jsx` renders `<App>` inside `StrictMode` — the router setup belongs here, not in App.jsx.
-- `public/icons.svg` is a sprite sheet; reference icons via `<use href="/icons.svg#icon-name">`.
-- `app_outline/` contains wireframes (PNG) and the product spec — not shipped to production.
+### Provider Stack (`src/main.jsx`)
 
-## Tech Stack
+```
+BrowserRouter > AuthProvider > LocationProvider > SavedProvider > App
+```
 
-| Layer | Library / Tool | Notes |
-|-------|---------------|-------|
-| UI | React 19 | Concurrent features available |
-| Routing | React Router DOM v7 | Installed, not yet wired up |
-| Build | Vite 8 | `@vitejs/plugin-react` with Oxc transform |
-| Linting | ESLint flat config | `eslint.config.js`; includes react-hooks + react-refresh rules |
-| Types | `@types/react`, `@types/react-dom` | Project is JSX (not TSX); types are available if TSX is adopted |
+- **`AuthContext`** — `user` (null = guest), `login`, `register`, `logout`, `updateProfile`, `updatePassword`
+- **`LocationContext`** — `localRegion` string (persisted to `localStorage` under key `pc_local_region`), `setLocalRegion`
+- **`SavedContext`** — in-memory `savedArticleIds` (Set) and `savedSearches` (array); not yet persisted
+  - Full API: `toggleSaveArticle(id)`, `isArticleSaved(id)`, `saveSearch(query)`, `unsaveSearch(id)`, `isSearchSaved(query)`, `getSavedSearchId(query)`
 
-## CSS Architecture
+### Modal State (`src/App.jsx`)
 
-`src/index.css` defines the global design token layer — read this before writing component styles:
+All modals are managed in `App` via a single `modal` state: `null | 'auth' | 'location' | 'donate' | 'profile'`. Modal open/close calls flow down from `App` through props. `App` also owns the global `region` and `category` filter state and passes them to `Header` and `HomePage`.
 
-- **Color tokens**: `--text`, `--text-h`, `--bg`, `--border`, `--code-bg`, `--accent` (purple)
+**`onAuthRequired` callback convention** (used throughout the tree): passing the string `'profile'` opens the profile modal directly; passing any other string (or no argument) opens the auth modal and uses the string as a contextual hint displayed to the user (e.g. `'Log in to save articles.'`).
+
+### Services (`src/services/`)
+
+All service modules expose stable async function signatures. Stage 1 internals are mocks; replace internals only in Stage 2 — callers do not change.
+
+- **`articlesService.js`** — `getArticles`, `searchArticles`, `getArticlesByIds`; reads from `src/data/articles.json`
+- **`authService.js`** — `login`, `register`, `requestPasswordReset`, `validateResetToken`, `setNewPassword`, `updateProfile`, `updatePassword`; in-memory accounts, seed: `demo@example.com / password`
+- **`paymentService.js`** — `initiateDonation({ amount })`; stub returning `{ ok: true, stub: true }`
+
+**Stage 1 note**: `getArticles` / `searchArticles` / `getArticlesByIds` are currently synchronous (they read a local JSON import), so their callers use `useMemo` rather than `useEffect`+`useState`. Stage 2 will need to change callers to async data-fetching when the service internals become real `fetch` calls.
+
+### Article Data Shape (`src/data/articles.json`)
+
+Each article object has these fields — the contract between the service layer and all UI components:
+
+```
+id          string   e.g. "w-biz-1"
+region      string   "World" | "US" | "Local"
+category    string   e.g. "Business"
+title       string
+publishDate string   ISO 8601
+source      string   e.g. "Reuters"
+snippet     string   short description
+imageUrl    string   URL
+url         string   source article URL (opened in new tab on card click)
+```
+
+### Routing (`src/App.jsx`)
+
+| Route | Component | Guard |
+|---|---|---|
+| `/` | `HomePage` | — |
+| `/search` | `SearchPage` | — |
+| `/saved-articles` | `SavedArticlesPage` | `ProtectedRoute` |
+| `/saved-searches` | `SavedSearchesPage` | `ProtectedRoute` |
+| `/password-reset/:token` | `PasswordResetPage` | — |
+| `/verify-email/:token` | `VerifyEmailPage` | — |
+| `/about` | inline `AboutPage` | — |
+| `*` | `ErrorPage` | — |
+
+`ProtectedRoute` (`src/router/ProtectedRoute.jsx`) redirects unauthenticated users to `/`.
+
+### Pagination Reset Pattern
+
+`HomePage` and `SearchPage` both reset to page 1 when their filter inputs change using React's render-time state adjustment (not `useEffect`). A `[prevFilters, setPrevFilters]` pair tracks the previous filter values; when they differ, `setPage(1)` is called during render. This is intentional — don't refactor it to `useEffect`.
+
+### CSS Architecture
+
+Each component has a co-located `.module.css` file (CSS Modules). Global design tokens are in `src/index.css`:
+
+- **Color tokens**: `--text`, `--text-h`, `--bg`, `--border`, `--code-bg`, `--accent` (purple), `--color-navy`
 - **Font tokens**: `--sans` (system-ui), `--heading`, `--mono`
-- **Shadow tokens**: defined at root
-- **Dark mode**: via `@media (prefers-color-scheme: dark)` — tokens flip automatically
+- **Dark mode**: `@media (prefers-color-scheme: dark)` — tokens flip automatically
 - **Root layout**: `#root` is `max-width: 1126px`, flexbox column
 - **Responsive breakpoint**: `max-width: 1024px` downsizes base font from 18 px → 16 px
 - CSS nesting is used throughout — supported by Vite's PostCSS defaults
 
-`src/App.css` and its styles are all starter-template artifacts; replace freely when building real components.
+`src/App.css` is a starter-template artifact; it can be replaced or emptied.
 
-## Implementation Status
+### Other Conventions
 
-Everything below is TODO — no Pulse Check–specific code exists yet:
+- `public/icons.svg` is a sprite sheet; reference icons via `<use href="/icons.svg#icon-name">` (wrapped by `src/components/ui/Icon.jsx`).
+- `app_outline/` contains wireframes (PNG) and the product spec — not shipped to production.
+- `src/data/locations.js` exports `searchLocations(query)` for the Local Region type-ahead (static list of ~80 US cities).
 
-- **Routing** — React Router is installed but `<BrowserRouter>`/`<Routes>` are not set up
-- **Global Header** — menu icon, date, location label (editable), Donate button, user icon, search box
-- **Region tabs + sub-category row** — World / US / Local tabs; 9 sub-category chips
-- **Article grid** — 3 × 3 paginated `ArticleCard` components
-- **Search page** — date-range filter, sort toggle (newest/oldest)
-- **Auth popups** — Login / Register (tabbed), password-reset flow, email verification
-- **Account dropdown** — Update Profile (Profile & Password tabs), Logout
-- **Set Local Region popup** — type-ahead with city/state/ZIP suggestions
-- **Saved Articles page** — sort by publish-date or date-saved
-- **Saved Searches page** — Search (re-run) and unsave per card
-- **Sidebar / menu** — guest: About Us; registered: + Saved Articles, Saved Searches, Logout
-- **API client** — no fetch/axios setup exists; backend URL unknown
-- **Stripe integration** — donation flow, method TBD (Checkout redirect vs. embedded)
+## Stage 2 Upgrade Checklist
 
-## Expected Routes
+When connecting a real backend:
 
-```
-/                          Home — browse by region + sub-category
-/search                    Search results
-/saved-articles            Registered users only
-/saved-searches            Registered users only
-/password-reset/:token     Reset-password confirmation step
-/verify-email/:token       Email verification
-```
-
-Error and "no results" states are defined in the spec; an `<ErrorPage>` component is expected.
+1. Replace `authService.js` internals — function signatures stay the same
+2. Replace `articlesService.js` internals — switch `getArticles`/`searchArticles` to fetch calls; update callers from `useMemo` to `useEffect`+`useState` (currently synchronous)
+3. Replace `paymentService.js` `initiateDonation` with Stripe Checkout redirect
+4. Persist `SavedContext` state to the backend (currently in-memory only)
+5. `LocationContext` already persists to `localStorage` — no change needed
