@@ -1,9 +1,37 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/layout/Logo';
+import { useAuth } from '../contexts/AuthContext';
 import styles from './VerifyEmailPage.module.css';
 
 export default function VerifyEmailPage() {
   const navigate = useNavigate();
+  const { user, authInitialized } = useAuth();
+
+  // Once the Supabase client processes the hash and AuthContext confirms the user
+  // is signed in, redirect to wherever they were before (or home).
+  useEffect(() => {
+    if (!authInitialized) return;
+    if (user) {
+      const returnTo = sessionStorage.getItem('pc_return_to') || '/';
+      sessionStorage.removeItem('pc_return_to');
+      navigate(returnTo, { replace: true });
+    }
+  }, [user, authInitialized, navigate]);
+
+  // While the hash is being processed, show a brief loading state.
+  const hasToken = window.location.hash.includes('access_token');
+  if (hasToken && !authInitialized) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.card}>
+          <p className={styles.text}>Verifying your email…</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Direct navigation (no hash) — user just registered and is waiting for the email.
   return (
     <div className={styles.page}>
       <div className={styles.logoWrap} onClick={() => navigate('/')}>

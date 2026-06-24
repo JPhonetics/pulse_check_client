@@ -1,0 +1,49 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Wednesday, June 24, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Latest Headlines" [level=1] [ref=e61]
+    - paragraph [ref=e62]: Loading articles…

@@ -6,6 +6,7 @@ import AuthModal from './components/modals/AuthModal';
 import LocalRegionModal from './components/modals/LocalRegionModal';
 import UpdateProfileModal from './components/modals/UpdateProfileModal';
 import DonateModal from './components/modals/DonateModal';
+import RegionCarryoverModal from './components/modals/RegionCarryoverModal';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import SavedArticlesPage from './pages/SavedArticlesPage';
@@ -32,7 +33,7 @@ function AboutPage() {
 
 // modal names: null | 'auth' | 'location' | 'donate' | 'profile'
 export default function App() {
-  const { user } = useAuth();
+  const { user, pendingRegionCarryover } = useAuth();
   const [region, setRegion] = useState('World');
   const [category, setCategory] = useState('All');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -51,6 +52,8 @@ export default function App() {
     if (context === 'profile') {
       setModal('profile');
     } else {
+      // Store the current path so we can return the user here after login.
+      sessionStorage.setItem('pc_return_to', window.location.pathname);
       setAuthHint(typeof context === 'string' && context !== 'profile' ? context : '');
       setAuthInitScreen('login');
       setModal('auth');
@@ -93,8 +96,8 @@ export default function App() {
         />
         <Route path="/saved-articles" element={<ProtectedRoute><SavedArticlesPage /></ProtectedRoute>} />
         <Route path="/saved-searches" element={<ProtectedRoute><SavedSearchesPage /></ProtectedRoute>} />
-        <Route path="/password-reset/:token" element={<PasswordResetPage />} />
-        <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
+        <Route path="/password-reset" element={<PasswordResetPage />} />
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
@@ -114,6 +117,9 @@ export default function App() {
       )}
       {modal === 'donate' && (
         <DonateModal onClose={closeModal} />
+      )}
+      {pendingRegionCarryover && (
+        <RegionCarryoverModal />
       )}
     </>
   );

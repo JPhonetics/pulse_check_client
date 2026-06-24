@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
+import { useAuth } from './AuthContext';
+import * as authService from '../services/authService';
 
 const STORAGE_KEY = 'pc_local_region';
 
@@ -13,6 +15,7 @@ function loadFromStorage() {
 const LocationContext = createContext(null);
 
 export function LocationProvider({ children }) {
+  const { user } = useAuth();
   const [localRegion, setLocalRegionState] = useState(loadFromStorage);
 
   const setLocalRegion = useCallback((region) => {
@@ -26,7 +29,14 @@ export function LocationProvider({ children }) {
       // storage unavailable
     }
     setLocalRegionState(region);
-  }, []);
+
+    if (user && region) {
+      const parts = region.split(',').map(p => p.trim());
+      if (parts.length >= 2) {
+        authService.saveLocalRegionToProfile(user.id, parts[0], parts[1]).catch(() => {});
+      }
+    }
+  }, [user]);
 
   return (
     <LocationContext.Provider value={{ localRegion, setLocalRegion }}>

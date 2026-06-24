@@ -1,0 +1,107 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Wednesday, June 24, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Set Location
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Account menu for Demo" [ref=e148] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+      - button "Saved Articles" [ref=e149] [cursor=pointer]
+      - button "Saved Searches" [ref=e150] [cursor=pointer]
+    - button "Logout" [ref=e152] [cursor=pointer]
+  - main [ref=e351]:
+    - heading "Latest Headlines" [level=1] [ref=e352]
+    - generic [ref=e353]:
+      - link "Google Turns to CO2 Battery Storage as Data Center Demand Tests Renewable Energy Limits" [ref=e354] [cursor=pointer]:
+        - generic [ref=e356]:
+          - generic [ref=e357]:
+            - generic [ref=e358]: All
+            - button "Save article" [ref=e359]:
+              - img [ref=e360]
+          - heading "Google Turns to CO2 Battery Storage as Data Center Demand Tests Renewable Energy Limits" [level=3] [ref=e362]
+          - paragraph [ref=e363]: Google and Italian energy storage developer Energy Dome are advancing a 23 MW/200 MWh carbon dioxide battery project in County Offaly, Ireland, aimed at demonstrating how long duration energy storage (LDES) can support renewable heavy grids.
+          - generic [ref=e364]:
+            - generic [ref=e365]: energynews_biz
+            - generic [ref=e366]: Jun 23, 2026
+      - link "Tamadi and Akain best at Junior TT Nationals" [ref=e367] [cursor=pointer]:
+        - generic [ref=e369]:
+          - generic [ref=e370]:
+            - generic [ref=e371]: All
+            - button "Save article" [ref=e372]:
+              - img [ref=e373]
+          - heading "Tamadi and Akain best at Junior TT Nationals" [level=3] [ref=e375]
+          - paragraph [ref=e376]: The Junior National Table Tennis Championship organised by the Table Tennis Association of Sri Lanka (TTASL) concluded at the Kandy Indoor Stadium, with several young paddlers delivering outstanding performances across
+          - generic [ref=e377]:
+            - generic [ref=e378]: dailymirror
+            - generic [ref=e379]: Jun 23, 2026
+      - 'link "Flipkart GOAT Sale 2026 Starts July 4: Top Smartphone Deals Teased From POCO C85x to iPhone 17" [ref=e380] [cursor=pointer]':
+        - generic [ref=e382]:
+          - generic [ref=e383]:
+            - generic [ref=e384]: All
+            - button "Save article" [ref=e385]:
+              - img [ref=e386]
+          - 'heading "Flipkart GOAT Sale 2026 Starts July 4: Top Smartphone Deals Teased From POCO C85x to iPhone 17" [level=3] [ref=e388]'
+          - paragraph [ref=e389]: Flipkart has teased 9 phones for its GOAT Sale starting July 4, from the iPhone 17 to the POCO C85x. Here are the verified specs and what to expect.
+          - generic [ref=e390]:
+            - generic [ref=e391]: gizbot
+            - generic [ref=e392]: Jun 23, 2026
+      - 'link "Punjab Police Constable Admit Card 2026 out: Check direct link and steps to download" [ref=e393] [cursor=pointer]':
+        - generic [ref=e395]:
+          - generic [ref=e396]:
+            - generic [ref=e397]: All
+            - button "Save article" [ref=e398]:
+              - img [ref=e399]
+          - 'heading "Punjab Police Constable Admit Card 2026 out: Check direct link and steps to download" [level=3] [ref=e401]'
+          - paragraph [ref=e402]: The Punjab Police Department has released the Constable Admit Card 2026 for the upcoming recruitment examination. Candidates can download their hall tickets online for the Computer-Based Test commencing July 1, 2026. This drive aims to fill 3,298 vacancies. Ensure you carry a printed admit card and valid ID to the exam center. Check all details carefully upon downloading
+          - generic [ref=e403]:
+            - generic [ref=e404]: toi
+            - generic [ref=e405]: Jun 23, 2026
+      - link "Ritabrata Banerjee's Faction Moves EC, Stake Claim as ‘Real TMC’" [ref=e406] [cursor=pointer]:
+        - generic [ref=e408]:
+          - generic [ref=e409]:
+            - generic [ref=e410]: All
+            - button "Save article" [ref=e411]:
+              - img [ref=e412]
+          - heading "Ritabrata Banerjee's Faction Moves EC, Stake Claim as ‘Real TMC’" [level=3] [ref=e414]
+          - paragraph [ref=e415]: The move from Ritabrata Banerjee's camp has triggered a dispute over the party’s name, assets, and election symbol.
+          - generic [ref=e416]:
+            - generic [ref=e417]: outlookindia
+            - generic [ref=e418]: Jun 23, 2026

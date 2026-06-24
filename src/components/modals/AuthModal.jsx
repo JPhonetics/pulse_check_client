@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../ui/Icon';
 import PasswordInput from '../ui/PasswordInput';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,11 +9,13 @@ import styles from './AuthModal.module.css';
 // screen values: 'login' | 'register' | 'forgot-password' | 'forgot-sent' | 'register-confirm'
 export default function AuthModal({ onClose, initialScreen = 'login', hint }) {
   const { login, register } = useAuth();
+  const navigate = useNavigate();
   const [screen, setScreen] = useState(initialScreen);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
   const [resendCooldown, setResendCooldown] = useState(false);
+  const [regResendCooldown, setRegResendCooldown] = useState(false);
 
   // ─── Login ──────────────────────────────────────────────────────────────────
   const [loginForm, setLoginForm] = useState({ email: '', password: '' });
@@ -27,9 +30,11 @@ export default function AuthModal({ onClose, initialScreen = 'login', hint }) {
       setError(result.error);
       return;
     }
-    // If guest had a local region saved, we'd prompt here in Phase 5
+    const returnTo = sessionStorage.getItem('pc_return_to') || null;
+    sessionStorage.removeItem('pc_return_to');
     onClose?.();
-  }, [login, loginForm, onClose]);
+    if (returnTo) navigate(returnTo);
+  }, [login, loginForm, onClose, navigate]);
 
   // ─── Register ───────────────────────────────────────────────────────────────
   const [regForm, setRegForm] = useState({ firstName: '', email: '', password: '', confirm: '', terms: false });
@@ -78,6 +83,13 @@ export default function AuthModal({ onClose, initialScreen = 'login', hint }) {
     await authService.requestPasswordReset({ email: forgotEmail });
     setTimeout(() => setResendCooldown(false), 30000);
   }, [resendCooldown, forgotEmail]);
+
+  const handleRegResend = useCallback(async () => {
+    if (regResendCooldown) return;
+    setRegResendCooldown(true);
+    await authService.resendVerification({ email: regForm.email });
+    setTimeout(() => setRegResendCooldown(false), 30000);
+  }, [regResendCooldown, regForm.email]);
 
   // ─── Shared ─────────────────────────────────────────────────────────────────
   const isLogin = screen === 'login' || screen === 'forgot-password';
@@ -258,6 +270,13 @@ export default function AuthModal({ onClose, initialScreen = 'login', hint }) {
               Please check your inbox and click the verification link to activate your account.
             </p>
             <p className={styles.confirmNote}>(Don't see it? Be sure to check your spam or junk folder!)</p>
+            <button
+              className={styles.resendBtn}
+              onClick={handleRegResend}
+              disabled={regResendCooldown}
+            >
+              {regResendCooldown ? 'Email sent — try again in 30s' : 'Resend verification email'}
+            </button>
             <button className={styles.backLink} onClick={onClose}>Back to site</button>
           </div>
         )}

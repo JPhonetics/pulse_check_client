@@ -71,6 +71,11 @@
   text-overflow: ellipsis;
 }
 
+.dateRange {
+  font-size: 0.82rem;
+  color: var(--color-gray-400);
+}
+
 .cardActions {
   display: flex;
   align-items: center;

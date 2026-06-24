@@ -61,7 +61,14 @@ export default function SavedSearchesPage() {
               <li key={s.id} className={styles.card}>
                 <div className={styles.cardInfo}>
                   <p className={styles.saveDate}>Save Date: {formatSaveDate(s.savedDate)}</p>
-                  <p className={styles.criteria}>Criteria: {s.query}</p>
+                  <p className={styles.criteria}>
+                    Criteria: {s.query}
+                    {(s.dateFrom || s.dateTo) && (
+                      <span className={styles.dateRange}>
+                        {' '}({[s.dateFrom, s.dateTo].filter(Boolean).join(' – ')})
+                      </span>
+                    )}
+                  </p>
                 </div>
                 <div className={styles.cardActions}>
                   <button

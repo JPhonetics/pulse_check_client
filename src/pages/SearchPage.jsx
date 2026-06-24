@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ArticleGrid from '../components/articles/ArticleGrid';
 import Pagination from '../components/articles/Pagination';
@@ -19,6 +19,9 @@ export default function SearchPage({ onAuthRequired }) {
   const [dateTo, setDateTo] = useState('');
   const [sort, setSort] = useState('desc');
   const [page, setPage] = useState(1);
+  const [result, setResult] = useState({ articles: [], totalPages: 1, total: 0, page: 1 });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // Reset page when filters change
   const [prevQuery, setPrevQuery] = useState({ query, dateFrom, dateTo, sort });
@@ -27,14 +30,19 @@ export default function SearchPage({ onAuthRequired }) {
     setPrevQuery({ query, dateFrom, dateTo, sort });
     setPage(1);
   }
-
   const effectivePage = (prevQuery.query !== query || prevQuery.dateFrom !== dateFrom ||
     prevQuery.dateTo !== dateTo || prevQuery.sort !== sort) ? 1 : page;
 
-  const result = useMemo(
-    () => searchArticles({ query, dateFrom: dateFrom || undefined, dateTo: dateTo || undefined, page: effectivePage, sort }),
-    [query, dateFrom, dateTo, effectivePage, sort]
-  );
+  useEffect(() => {
+    if (!query) return;
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
+    searchArticles({ query, dateFrom: dateFrom || undefined, dateTo: dateTo || undefined, page: effectivePage, sort })
+      .then(r => { if (!cancelled) { setResult(r); setLoading(false); } })
+      .catch(e => { if (!cancelled) { setError(e.message || 'Search failed.'); setLoading(false); } });
+    return () => { cancelled = true; };
+  }, [query, dateFrom, dateTo, effectivePage, sort]);
 
   const saved = isSearchSaved(query);
 
@@ -47,9 +55,9 @@ export default function SearchPage({ onAuthRequired }) {
       const id = getSavedSearchId(query);
       if (id) unsaveSearch(id);
     } else {
-      saveSearch(query);
+      saveSearch(query, dateFrom || undefined, dateTo || undefined);
     }
-  }, [user, saved, query, saveSearch, unsaveSearch, getSavedSearchId, onAuthRequired]);
+  }, [user, saved, query, dateFrom, dateTo, saveSearch, unsaveSearch, getSavedSearchId, onAuthRequired]);
 
   if (!query) {
     return (
@@ -100,13 +108,21 @@ export default function SearchPage({ onAuthRequired }) {
       </div>
 
       {/* ── Results ─────────────────────────────────────────────────── */}
-      <ArticleGrid
-        articles={result.articles}
-        savedIds={user ? savedArticleIds : new Set()}
-        onSaveToggle={a => toggleSaveArticle(a.id)}
-        onLoginRequired={() => onAuthRequired?.('Log in to save articles.')}
-      />
-      <Pagination page={result.page} totalPages={result.totalPages} onChange={setPage} />
+      {loading ? (
+        <p className={styles.empty}>Searching…</p>
+      ) : error ? (
+        <p className={styles.empty} style={{ color: 'var(--accent)' }}>{error}</p>
+      ) : (
+        <>
+          <ArticleGrid
+            articles={result.articles}
+            savedIds={user ? savedArticleIds : new Set()}
+            onSaveToggle={a => toggleSaveArticle(a)}
+            onLoginRequired={() => onAuthRequired?.('Log in to save articles.')}
+          />
+          <Pagination page={result.page} totalPages={result.totalPages} onChange={setPage} />
+        </>
+      )}
     </main>
   );
 }

@@ -46,7 +46,7 @@ export default function LocalRegionModal({ onClose }) {
         </button>
 
         <h2 className={styles.title}>Set your local region</h2>
-        <p className={styles.subtitle}>Enter a city, state, or ZIP code</p>
+        <p className={styles.subtitle}>Enter a city or state</p>
 
         <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
           <div className={styles.inputWrap}>
