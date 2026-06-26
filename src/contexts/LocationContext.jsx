@@ -46,10 +46,6 @@ export function LocationProvider({ children }) {
           setLocalRegionState(region);
         }
       }).catch(() => {});
-    } else if (!currId && prevId) {
-      // User just logged out — clear the stored region.
-      persistToStorage(null);
-      setLocalRegionState(null);
     }
   }, [user]);
 
