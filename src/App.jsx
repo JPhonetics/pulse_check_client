@@ -14,6 +14,7 @@ import SavedSearchesPage from './pages/SavedSearchesPage';
 import ErrorPage from './pages/ErrorPage';
 import PasswordResetPage from './pages/PasswordResetPage';
 import VerifyEmailPage from './pages/VerifyEmailPage';
+import DonatePage from './pages/DonatePage';
 import ProtectedRoute from './router/ProtectedRoute';
 import { useAuth } from './contexts/AuthContext';
 
@@ -98,6 +99,7 @@ export default function App() {
         <Route path="/saved-searches" element={<ProtectedRoute><SavedSearchesPage /></ProtectedRoute>} />
         <Route path="/password-reset" element={<PasswordResetPage />} />
         <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/donate" element={<DonatePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
