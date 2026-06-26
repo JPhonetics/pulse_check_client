@@ -8,7 +8,7 @@ function formatDate(iso) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export default function ArticleCard({ article, isSaved = false, onSaveToggle, onLoginRequired }) {
+export default function ArticleCard({ article, saveState = 'none', onSaveToggle, onLoginRequired, onOpenPicker }) {
   const { user } = useAuth();
 
   const handleBookmark = useCallback((e) => {
@@ -22,8 +22,25 @@ export default function ArticleCard({ article, isSaved = false, onSaveToggle, on
   }, [user, article, onSaveToggle, onLoginRequired]);
 
   const handleCardClick = useCallback(() => {
-    window.open(article.url, '_blank', 'noopener,noreferrer');
-  }, [article.url]);
+    if (article.sourceCount > 1) {
+      onOpenPicker?.(article);
+    } else {
+      window.open(article.url, '_blank', 'noopener,noreferrer');
+    }
+  }, [article, onOpenPicker]);
+
+  const bookmarkClass = [
+    styles.bookmark,
+    saveState === 'all' ? styles.saved : '',
+    saveState === 'some' ? styles.bookmarkPartial : '',
+  ].filter(Boolean).join(' ');
+
+  const bookmarkIcon = saveState === 'all' ? 'icon-bookmark-filled' : 'icon-bookmark';
+
+  const bookmarkLabel =
+    saveState === 'all' ? 'Unsave article' :
+    saveState === 'some' ? 'Save all sources' :
+    'Save article';
 
   return (
     <article className={styles.card} onClick={handleCardClick} role="link" tabIndex={0}
@@ -48,12 +65,12 @@ export default function ArticleCard({ article, isSaved = false, onSaveToggle, on
         <div className={styles.meta}>
           <span className={styles.category}>{article.category}</span>
           <button
-            className={`${styles.bookmark} ${isSaved ? styles.saved : ''}`}
+            className={bookmarkClass}
             onClick={handleBookmark}
-            aria-label={isSaved ? 'Unsave article' : 'Save article'}
-            aria-pressed={isSaved}
+            aria-label={bookmarkLabel}
+            aria-pressed={saveState === 'all'}
           >
-            <Icon id={isSaved ? 'icon-bookmark-filled' : 'icon-bookmark'} size={18} />
+            <Icon id={bookmarkIcon} size={18} />
           </button>
         </div>
 
@@ -61,7 +78,10 @@ export default function ArticleCard({ article, isSaved = false, onSaveToggle, on
         <p className={styles.snippet}>{article.snippet}</p>
 
         <div className={styles.footer}>
-          <span className={styles.source}>{article.source}</span>
+          {article.sourceCount > 1
+            ? <span className={styles.badge}>{article.sourceCount} sources</span>
+            : <span className={styles.source}>{article.source}</span>
+          }
           <span className={styles.date}>{formatDate(article.publishDate)}</span>
         </div>
       </div>

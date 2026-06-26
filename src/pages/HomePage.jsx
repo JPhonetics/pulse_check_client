@@ -9,7 +9,7 @@ import styles from './HomePage.module.css';
 
 export default function HomePage({ region, category, onAuthRequired }) {
   const { user } = useAuth();
-  const { savedArticleIds, toggleSaveArticle } = useSaved();
+  const { savedArticleIds, toggleSaveArticle, getGroupSaveState, saveGroup, unsaveGroup, toggleGroupSource } = useSaved();
   const { localRegion } = useLocation();
   const [page, setPage] = useState(1);
   const [result, setResult] = useState({ articles: [], totalPages: 1, total: 0, page: 1, localBanner: null });
@@ -63,6 +63,11 @@ export default function HomePage({ region, category, onAuthRequired }) {
             savedIds={user ? savedArticleIds : new Set()}
             onSaveToggle={handleSaveToggle}
             onLoginRequired={() => onAuthRequired?.()}
+            getGroupSaveState={getGroupSaveState}
+            saveGroup={saveGroup}
+            unsaveGroup={unsaveGroup}
+            toggleGroupSource={toggleGroupSource}
+            user={user}
           />
           <Pagination page={result.page} totalPages={result.totalPages} onChange={setPage} />
         </>

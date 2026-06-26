@@ -1,3 +1,17 @@
+.cardWrapper {
+  position: relative;
+  transition: transform var(--transition-base);
+  z-index: 0;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-2px);
+}
+
+.cardWrapperActive {
+  z-index: 10;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
