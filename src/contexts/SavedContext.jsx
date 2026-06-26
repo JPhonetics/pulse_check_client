@@ -70,6 +70,76 @@ export function SavedProvider({ children }) {
 
   const isArticleSaved = useCallback((id) => savedArticleIds.has(id), [savedArticleIds]);
 
+  const savedByGroup = useMemo(() => {
+    const map = new Map();
+    for (const a of savedArticles) {
+      const key = a.groupKey ?? a.id;
+      if (!map.has(key)) map.set(key, new Set());
+      map.get(key).add(a.id);
+    }
+    return map;
+  }, [savedArticles]);
+
+  const getGroupSaveState = useCallback((groupKey, sourceIds) => {
+    const saved = savedByGroup.get(groupKey) ?? new Set();
+    const count = sourceIds.filter(id => saved.has(id)).length;
+    if (count === 0) return 'none';
+    if (count === sourceIds.length) return 'all';
+    return 'some';
+  }, [savedByGroup]);
+
+  const saveGroup = useCallback(async (sources) => {
+    if (!userId) return;
+    const newArticles = sources.map(s => ({
+      id: s.id,
+      region: 'Saved',
+      category: 'All',
+      title: s.title,
+      publishDate: s.publishDate,
+      source: s.source,
+      snippet: s.snippet || '',
+      imageUrl: s.imageUrl || '',
+      url: s.url,
+      groupKey: s.groupKey ?? null,
+    }));
+    const toAdd = newArticles.filter(a => !savedArticleIds.has(a.id));
+    setSavedArticles(prev => [...prev, ...toAdd]);
+    try {
+      await savedArticleService.saveArticles(userId, sources);
+    } catch (err) {
+      console.error('[SavedContext] saveGroup failed:', err.message);
+      setSavedArticles(prev => prev.filter(a => !toAdd.some(t => t.id === a.id)));
+    }
+  }, [userId, savedArticleIds]);
+
+  const unsaveGroup = useCallback(async (articleIds) => {
+    if (!userId) return;
+    const removed = savedArticles.filter(a => articleIds.includes(a.id));
+    setSavedArticles(prev => prev.filter(a => !articleIds.includes(a.id)));
+    try {
+      await savedArticleService.unsaveArticles(userId, articleIds);
+    } catch (err) {
+      console.error('[SavedContext] unsaveGroup failed:', err.message);
+      setSavedArticles(prev => [...prev, ...removed]);
+    }
+  }, [userId, savedArticles]);
+
+  const toggleGroupSource = useCallback(async (source, groupKey) => {
+    const article = {
+      id: source.id,
+      region: 'Saved',
+      category: 'All',
+      title: source.title,
+      publishDate: source.publishDate,
+      source: source.source,
+      snippet: source.snippet || '',
+      imageUrl: source.imageUrl || '',
+      url: source.url,
+      groupKey,
+    };
+    await toggleSaveArticle(article);
+  }, [toggleSaveArticle]);
+
   const saveSearch = useCallback(async (query, dateFrom, dateTo) => {
     if (savedSearches.some(s => s.query === query)) return;
     const tempId = `temp-${Date.now()}`;
@@ -108,6 +178,7 @@ export function SavedProvider({ children }) {
       savedArticles, savedArticleIds,
       toggleSaveArticle, isArticleSaved,
       savedSearches, saveSearch, unsaveSearch, isSearchSaved, getSavedSearchId,
+      savedByGroup, getGroupSaveState, saveGroup, unsaveGroup, toggleGroupSource,
     }}>
       {children}
     </SavedContext.Provider>

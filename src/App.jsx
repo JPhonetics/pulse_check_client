@@ -5,7 +5,6 @@ import Sidebar from './components/layout/Sidebar';
 import AuthModal from './components/modals/AuthModal';
 import LocalRegionModal from './components/modals/LocalRegionModal';
 import UpdateProfileModal from './components/modals/UpdateProfileModal';
-import DonateModal from './components/modals/DonateModal';
 import RegionCarryoverModal from './components/modals/RegionCarryoverModal';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
@@ -32,11 +31,11 @@ function AboutPage() {
   );
 }
 
-// modal names: null | 'auth' | 'location' | 'donate' | 'profile'
+// modal names: null | 'auth' | 'location' | 'profile'
 export default function App() {
   const { user, pendingRegionCarryover } = useAuth();
-  const [region, setRegion] = useState('World');
-  const [category, setCategory] = useState('All');
+  const [region, setRegion] = useState(() => localStorage.getItem('pc_region') || 'World');
+  const [category, setCategory] = useState(() => localStorage.getItem('pc_category') || 'All');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [modal, setModal] = useState(null);
   const [authHint, setAuthHint] = useState('');
@@ -47,6 +46,13 @@ export default function App() {
   const handleRegionChange = useCallback((r) => {
     setRegion(r);
     setCategory('All');
+    localStorage.setItem('pc_region', r);
+    localStorage.setItem('pc_category', 'All');
+  }, []);
+
+  const handleCategoryChange = useCallback((c) => {
+    setCategory(c);
+    localStorage.setItem('pc_category', c);
   }, []);
 
   const handleAuthRequired = useCallback((context) => {
@@ -67,11 +73,10 @@ export default function App() {
         region={region}
         onRegionChange={handleRegionChange}
         category={category}
-        onCategoryChange={setCategory}
+        onCategoryChange={handleCategoryChange}
         onMenuToggle={() => setSidebarOpen(true)}
         onAuthRequired={handleAuthRequired}
         onLocationEdit={() => setModal('location')}
-        onDonate={() => setModal('donate')}
       />
 
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -116,9 +121,6 @@ export default function App() {
       )}
       {modal === 'profile' && user && (
         <UpdateProfileModal onClose={closeModal} />
-      )}
-      {modal === 'donate' && (
-        <DonateModal onClose={closeModal} />
       )}
       {pendingRegionCarryover && (
         <RegionCarryoverModal />
