@@ -1,0 +1,105 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Thursday, June 25, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - generic [ref=e61]:
+      - button "Save this search" [ref=e62] [cursor=pointer]:
+        - img [ref=e63]
+      - 'heading "Searching: technology" [level=1] [ref=e65]'
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]: "Date Range:"
+        - textbox "From date" [ref=e69] [cursor=pointer]
+        - generic [ref=e70]: —
+        - textbox "To date" [ref=e71] [cursor=pointer]
+      - button "Sort descending, click to toggle" [ref=e72] [cursor=pointer]:
+        - generic [ref=e73]: Descending
+        - img [ref=e74]
+    - generic [ref=e77]:
+      - link "Comparing nCino (NASDAQ:NCNO) & Calix (NYSE:CALX)" [ref=e78] [cursor=pointer]:
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: All
+            - button "Save article" [ref=e83]:
+              - img [ref=e84]
+          - heading "Comparing nCino (NASDAQ:NCNO) & Calix (NYSE:CALX)" [level=3] [ref=e86]
+          - paragraph [ref=e87]: nCino (NASDAQ:NCNO – Get Free Report) and Calix (NYSE:CALX – Get Free Report) are both computer and technology companies, but which is the superior investment? We will contrast the two companies based on the strength of their earnings, risk, profitability, valuation, dividends, institutional ownership and analyst recommendations. Profitability This table compares nCino and Calix’s net [...]
+          - generic [ref=e88]:
+            - generic [ref=e89]: americanbankingnews
+            - generic [ref=e90]: Jun 25, 2026
+      - 'link "Doyel: If Braden Smith makes it in the NBA – and he will – it has to be with the Pacers" [ref=e91] [cursor=pointer]':
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e95]: All
+            - button "Save article" [ref=e96]:
+              - img [ref=e97]
+          - 'heading "Doyel: If Braden Smith makes it in the NBA – and he will – it has to be with the Pacers" [level=3] [ref=e99]'
+          - paragraph [ref=e100]: USA TODAY delivers current national and local news, sports, entertainment, finance, technology, and more through award-winning journalism, photos, and videos.
+          - generic [ref=e101]:
+            - generic [ref=e102]: indystar
+            - generic [ref=e103]: Jun 25, 2026
+      - link "Brightstar Lottery to Enhance Retail Technology for Oregon Lottery via Five-Year Contract Extension" [ref=e104] [cursor=pointer]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e108]: All
+            - button "Save article" [ref=e109]:
+              - img [ref=e110]
+          - heading "Brightstar Lottery to Enhance Retail Technology for Oregon Lottery via Five-Year Contract Extension" [level=3] [ref=e112]
+          - paragraph [ref=e113]: "LONDON, June 24, 2026 /PRNewswire/ -- Brightstar Lottery PLC (NYSE: BRSL) (\"Brightstar\") announced today that its subsidiary, Brightstar Global Solutions Corporation, has signed a five-year contract extension with the Oregon Lottery through May 23, 2031 to deliver advanced retail..."
+          - generic [ref=e114]:
+            - generic [ref=e115]: cision
+            - generic [ref=e116]: Jun 24, 2026
+      - link "Why Enterprise Transformation Fails Without Operational Orchestration" [ref=e117] [cursor=pointer]:
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - generic [ref=e121]: All
+            - button "Save article" [ref=e122]:
+              - img [ref=e123]
+          - heading "Why Enterprise Transformation Fails Without Operational Orchestration" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Competitive advantage will depend less on the quantity of technology implementations and more on the ability to integrate modernization initiatives.
+          - generic [ref=e127]:
+            - generic [ref=e128]: forbes
+            - generic [ref=e129]: Jun 24, 2026

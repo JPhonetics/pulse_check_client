@@ -1,0 +1,152 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Thursday, June 25, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [active] [pressed] [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "World — Sports" [level=1] [ref=e309]
+    - generic [ref=e310]:
+      - link "Ancelotti tells Brazil to stay calm after Neymar returns and Vinicius sparkles" [ref=e311] [cursor=pointer]:
+        - generic [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e315]: Sports
+            - button "Save article" [ref=e316]:
+              - img [ref=e317]
+          - heading "Ancelotti tells Brazil to stay calm after Neymar returns and Vinicius sparkles" [level=3] [ref=e319]
+          - paragraph [ref=e320]: Morocco in comeback win over Haiti to reach last 32, Canada have rude awakening as Swiss claim top spot
+          - generic [ref=e321]:
+            - generic [ref=e322]: sowetanlive
+            - generic [ref=e323]: Jun 25, 2026
+      - link "Ancelotti tells Brazil to stay calm after Neymar returns and Vinicius sparkles" [ref=e324] [cursor=pointer]:
+        - generic [ref=e326]:
+          - generic [ref=e327]:
+            - generic [ref=e328]: Sports
+            - button "Save article" [ref=e329]:
+              - img [ref=e330]
+          - heading "Ancelotti tells Brazil to stay calm after Neymar returns and Vinicius sparkles" [level=3] [ref=e332]
+          - paragraph [ref=e333]: Morocco in comeback win over Haiti to reach last 32, Canada have rude awakening as Swiss claim top spot
+          - generic [ref=e334]:
+            - generic [ref=e335]: timeslive
+            - generic [ref=e336]: Jun 25, 2026
+      - link "Rashid Khan, Azmatullah Omarzai top ICC rankings in ODI, T20I" [ref=e337] [cursor=pointer]:
+        - generic [ref=e339]:
+          - generic [ref=e340]:
+            - generic [ref=e341]: Sports
+            - button "Save article" [ref=e342]:
+              - img [ref=e343]
+          - heading "Rashid Khan, Azmatullah Omarzai top ICC rankings in ODI, T20I" [level=3] [ref=e345]
+          - paragraph [ref=e346]: Afghan cricketers have delivered standout performances in the latest International Cricket Council (ICC) rankings across ODI and T20I formats, with Rashid Khan and Azmatullah Omarzai claiming top spots.
+          - generic [ref=e347]:
+            - generic [ref=e348]: pajhwok
+            - generic [ref=e349]: Jun 25, 2026
+      - link "Man City make decision on signing Malo Gusto as jaw-dropping Chelsea demand crushes Maresca dream" [ref=e350] [cursor=pointer]:
+        - generic [ref=e352]:
+          - generic [ref=e353]:
+            - generic [ref=e354]: Sports
+            - button "Save article" [ref=e355]:
+              - img [ref=e356]
+          - heading "Man City make decision on signing Malo Gusto as jaw-dropping Chelsea demand crushes Maresca dream" [level=3] [ref=e358]
+          - paragraph [ref=e359]: City have made fresh enquiries about Blues defender Gusto during their ongoing discussions surrounding Enzo Maresca's move to the Etihad, although they've been rocked by Chelsea's valuation of the player
+          - generic [ref=e360]:
+            - generic [ref=e361]: teamtalk
+            - generic [ref=e362]: Jun 25, 2026
+      - 'link "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [ref=e363] [cursor=pointer]':
+        - generic [ref=e365]:
+          - generic [ref=e366]:
+            - generic [ref=e367]: Sports
+            - button "Save article" [ref=e368]:
+              - img [ref=e369]
+          - 'heading "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [level=3] [ref=e371]'
+          - paragraph [ref=e372]: San Jose Sharks figure to be big players this weekend as they try to shape a playoff-caliber roster for next season
+          - generic [ref=e373]:
+            - generic [ref=e374]: marinij
+            - generic [ref=e375]: Jun 25, 2026
+      - 'link "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [ref=e376] [cursor=pointer]':
+        - generic [ref=e378]:
+          - generic [ref=e379]:
+            - generic [ref=e380]: Sports
+            - button "Save article" [ref=e381]:
+              - img [ref=e382]
+          - 'heading "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [level=3] [ref=e384]'
+          - paragraph [ref=e385]: San Jose Sharks figure to be big players this weekend as they try to shape a playoff-caliber roster for next season
+          - generic [ref=e386]:
+            - generic [ref=e387]: dailydemocrat
+            - generic [ref=e388]: Jun 25, 2026
+      - 'link "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [ref=e389] [cursor=pointer]':
+        - generic [ref=e391]:
+          - generic [ref=e392]:
+            - generic [ref=e393]: Sports
+            - button "Save article" [ref=e394]:
+              - img [ref=e395]
+          - 'heading "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [level=3] [ref=e397]'
+          - paragraph [ref=e398]: San Jose Sharks figure to be big players this weekend as they try to shape a playoff-caliber roster for next season
+          - generic [ref=e399]:
+            - generic [ref=e400]: santacruzsentinel
+            - generic [ref=e401]: Jun 25, 2026
+      - 'link "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [ref=e402] [cursor=pointer]':
+        - generic [ref=e404]:
+          - generic [ref=e405]:
+            - generic [ref=e406]: Sports
+            - button "Save article" [ref=e407]:
+              - img [ref=e408]
+          - 'heading "Buckle up: NHL draft weekend could be a doozy for Mike Grier and the Sharks" [level=3] [ref=e410]'
+          - paragraph [ref=e411]: San Jose Sharks figure to be big players this weekend as they try to shape a playoff-caliber roster for next season
+          - generic [ref=e412]:
+            - generic [ref=e413]: thereporter
+            - generic [ref=e414]: Jun 25, 2026
+      - link "Mallory Edwards embracing a new challenge at World Championships" [ref=e415] [cursor=pointer]:
+        - generic [ref=e417]:
+          - generic [ref=e418]:
+            - generic [ref=e419]: Sports
+            - button "Save article" [ref=e420]:
+              - img [ref=e421]
+          - heading "Mallory Edwards embracing a new challenge at World Championships" [level=3] [ref=e423]
+          - paragraph [ref=e424]: Mallory Edwards will head to this summer’s ICF Canoe Slalom World Championships facing a new challenge in her decorated career- competing as a mother.
+          - generic [ref=e425]:
+            - generic [ref=e426]: mirroruk
+            - generic [ref=e427]: Jun 25, 2026
+    - navigation "Pagination" [ref=e428]:
+      - button "Page 1" [ref=e429]: "1"
+      - button "Page 2" [ref=e430] [cursor=pointer]: "2"
+      - button "Page 3" [ref=e431] [cursor=pointer]: "3"

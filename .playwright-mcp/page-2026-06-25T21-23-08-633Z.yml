@@ -1,0 +1,151 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Thursday, June 25, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [active] [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Local Headlines" [level=1] [ref=e558]
+    - generic [ref=e559]:
+      - link "Embecta Corp. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights - EMBC" [ref=e560] [cursor=pointer]:
+        - generic [ref=e562]:
+          - generic [ref=e563]:
+            - generic [ref=e564]: All
+            - button "Save article" [ref=e565]:
+              - img [ref=e566]
+          - heading "Embecta Corp. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights - EMBC" [level=3] [ref=e568]
+          - paragraph [ref=e569]: "LOS ANGELES, June 25, 2026 /PRNewswire/ -- The DJS Law Group reminds investors of a class action lawsuit against Embecta Corp. (\"Embecta\" or \"the Company\") (NASDAQ: EMBC) for violations of §§10(b) and 20(a) of the Securities Exchange Act of 1934 and Rule 10b-5 promulgated thereunder by..."
+          - generic [ref=e570]:
+            - generic [ref=e571]: cision
+            - generic [ref=e572]: Jun 25, 2026
+      - link "Brokerages Set Parsons Corporation (NYSE:PSN) Target Price at $76.92" [ref=e573] [cursor=pointer]:
+        - generic [ref=e575]:
+          - generic [ref=e576]:
+            - generic [ref=e577]: All
+            - button "Save article" [ref=e578]:
+              - img [ref=e579]
+          - heading "Brokerages Set Parsons Corporation (NYSE:PSN) Target Price at $76.92" [level=3] [ref=e581]
+          - paragraph [ref=e582]: Parsons Corporation (NYSE:PSN – Get Free Report) has earned a consensus rating of “Moderate Buy” from the fifteen research firms that are covering the firm, Marketbeat reports. Six research analysts have rated the stock with a hold recommendation and nine have given a buy recommendation to the company. The average 1 year price target among [...]
+          - generic [ref=e583]:
+            - generic [ref=e584]: thelincolnianonline
+            - generic [ref=e585]: Jun 25, 2026
+      - link "Knicks acquire rights to an Aggie who never played an NBA game" [ref=e586] [cursor=pointer]:
+        - generic [ref=e588]:
+          - generic [ref=e589]:
+            - generic [ref=e590]: All
+            - button "Save article" [ref=e591]:
+              - img [ref=e592]
+          - heading "Knicks acquire rights to an Aggie who never played an NBA game" [level=3] [ref=e594]
+          - paragraph [ref=e595]: The Knicks acquired the draft rights to former Texas A&M center Chinemelu Elonu, who was drafted in 2009 and has built a long international career.
+          - generic [ref=e596]:
+            - generic [ref=e597]: aggieswire
+            - generic [ref=e598]: Jun 25, 2026
+      - link "Knicks acquire rights to an Aggie who never played an NBA game" [ref=e599] [cursor=pointer]:
+        - generic [ref=e601]:
+          - generic [ref=e602]:
+            - generic [ref=e603]: All
+            - button "Save article" [ref=e604]:
+              - img [ref=e605]
+          - heading "Knicks acquire rights to an Aggie who never played an NBA game" [level=3] [ref=e607]
+          - paragraph [ref=e608]: The Knicks acquired the draft rights to former Texas A&M center Chinemelu Elonu, who was drafted in 2009 and has built a long international career.
+          - generic [ref=e609]:
+            - generic [ref=e610]: yahoo
+            - generic [ref=e611]: Jun 25, 2026
+      - 'link "Gossip alert: Did Travis know Kourtney Kardashian was pregnant before the “reveal”?" [ref=e612] [cursor=pointer]':
+        - generic [ref=e614]:
+          - generic [ref=e615]:
+            - generic [ref=e616]: All
+            - button "Save article" [ref=e617]:
+              - img [ref=e618]
+          - 'heading "Gossip alert: Did Travis know Kourtney Kardashian was pregnant before the “reveal”?" [level=3] [ref=e620]'
+          - paragraph [ref=e621]: "Gossip alert: Did Travis know Kourtney Kardashian was pregnant before the “reveal”? Uncover the surprising timeline and insider details now. The post Gossip alert: Did Travis know Kourtney Kardashian was pregnant before the “reveal”? appeared first on Film Daily ."
+          - generic [ref=e622]:
+            - generic [ref=e623]: filmdaily
+            - generic [ref=e624]: Jun 25, 2026
+      - link "The World Cup is half over, with 54 of 104 matches complete. And the drama is just getting started" [ref=e625] [cursor=pointer]:
+        - generic [ref=e627]:
+          - generic [ref=e628]:
+            - generic [ref=e629]: All
+            - button "Save article" [ref=e630]:
+              - img [ref=e631]
+          - heading "The World Cup is half over, with 54 of 104 matches complete. And the drama is just getting started" [level=3] [ref=e633]
+          - paragraph [ref=e634]: Thirteen teams have secured spots in the knockout stage, while seven are out.
+          - generic [ref=e635]:
+            - generic [ref=e636]: sbsun
+            - generic [ref=e637]: Jun 25, 2026
+      - 'link "Doyel: If Braden Smith makes it in the NBA – and he will – it has to be with the Pacers" [ref=e638] [cursor=pointer]':
+        - generic [ref=e640]:
+          - generic [ref=e641]:
+            - generic [ref=e642]: All
+            - button "Save article" [ref=e643]:
+              - img [ref=e644]
+          - 'heading "Doyel: If Braden Smith makes it in the NBA – and he will – it has to be with the Pacers" [level=3] [ref=e646]'
+          - paragraph [ref=e647]: USA TODAY delivers current national and local news, sports, entertainment, finance, technology, and more through award-winning journalism, photos, and videos.
+          - generic [ref=e648]:
+            - generic [ref=e649]: indystar
+            - generic [ref=e650]: Jun 25, 2026
+      - link "Keep an eye on Kawhi Leonard and the Detroit Pistons, NBA expert says" [ref=e651] [cursor=pointer]:
+        - generic [ref=e653]:
+          - generic [ref=e654]:
+            - generic [ref=e655]: All
+            - button "Save article" [ref=e656]:
+              - img [ref=e657]
+          - heading "Keep an eye on Kawhi Leonard and the Detroit Pistons, NBA expert says" [level=3] [ref=e659]
+          - paragraph [ref=e660]: Kawhi Leonard is on a one-year, $50.3 million contract. He is extension eligible with either Los Angeles Clippers or a team that trades for him.
+          - generic [ref=e661]:
+            - generic [ref=e662]: freep
+            - generic [ref=e663]: Jun 25, 2026
+      - link "Keep an eye on Kawhi Leonard and the Detroit Pistons, NBA expert says" [ref=e664] [cursor=pointer]:
+        - generic [ref=e666]:
+          - generic [ref=e667]:
+            - generic [ref=e668]: All
+            - button "Save article" [ref=e669]:
+              - img [ref=e670]
+          - heading "Keep an eye on Kawhi Leonard and the Detroit Pistons, NBA expert says" [level=3] [ref=e672]
+          - paragraph [ref=e673]: Kawhi Leonard is on a one-year, $50.3 million contract. He is extension eligible with either Los Angeles Clippers or a team that trades for him.
+          - generic [ref=e674]:
+            - generic [ref=e675]: yahoo
+            - generic [ref=e676]: Jun 25, 2026
+    - navigation "Pagination" [ref=e677]:
+      - button "Page 1" [ref=e678]: "1"
+      - button "Page 2" [ref=e679] [cursor=pointer]: "2"
