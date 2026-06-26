@@ -34,8 +34,8 @@ function AboutPage() {
 // modal names: null | 'auth' | 'location' | 'profile'
 export default function App() {
   const { user, pendingRegionCarryover } = useAuth();
-  const [region, setRegion] = useState('World');
-  const [category, setCategory] = useState('All');
+  const [region, setRegion] = useState(() => localStorage.getItem('pc_region') || 'World');
+  const [category, setCategory] = useState(() => localStorage.getItem('pc_category') || 'All');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [modal, setModal] = useState(null);
   const [authHint, setAuthHint] = useState('');
@@ -46,6 +46,13 @@ export default function App() {
   const handleRegionChange = useCallback((r) => {
     setRegion(r);
     setCategory('All');
+    localStorage.setItem('pc_region', r);
+    localStorage.setItem('pc_category', 'All');
+  }, []);
+
+  const handleCategoryChange = useCallback((c) => {
+    setCategory(c);
+    localStorage.setItem('pc_category', c);
   }, []);
 
   const handleAuthRequired = useCallback((context) => {
@@ -66,7 +73,7 @@ export default function App() {
         region={region}
         onRegionChange={handleRegionChange}
         category={category}
-        onCategoryChange={setCategory}
+        onCategoryChange={handleCategoryChange}
         onMenuToggle={() => setSidebarOpen(true)}
         onAuthRequired={handleAuthRequired}
         onLocationEdit={() => setModal('location')}

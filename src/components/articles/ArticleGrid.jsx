@@ -13,6 +13,7 @@ export default function ArticleGrid({
   unsaveGroup,
   toggleGroupSource,
   user,
+  openSingleSourceDirectly = false,
 }) {
   const [activeArticle, setActiveArticle] = useState(null);
   const activeWrapperRef = useRef(null);
@@ -37,6 +38,11 @@ export default function ArticleGrid({
   }
 
   function handleOpenPicker(article) {
+    if (openSingleSourceDirectly && article.sourceCount === 1) {
+      const url = article.sources?.[0]?.url || article.url;
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
     setActiveArticle(prev => prev?.id === article.id ? null : article);
   }
 

@@ -59,7 +59,9 @@ BrowserRouter > AuthProvider > LocationProvider > SavedProvider > App
 - **`AuthContext`** — `user` (null = guest), `login`, `register`, `logout`, `updateProfile`, `updatePassword`
 - **`LocationContext`** — `localRegion` string (persisted to `localStorage` under key `pc_local_region`), `setLocalRegion`
 - **`SavedContext`** — persisted to Supabase via `savedArticleService` / `savedSearchService`; uses optimistic updates with rollback on error
-  - Full API: `toggleSaveArticle(article)`, `isArticleSaved(id)`, `savedArticles`, `savedArticleIds` (Set), `saveSearch(query, dateFrom, dateTo)`, `unsaveSearch(id)`, `isSearchSaved(query)`, `getSavedSearchId(query)`, `savedSearches`
+  - Article API: `toggleSaveArticle(article)`, `isArticleSaved(id)`, `savedArticles`, `savedArticleIds` (Set)
+  - Group-aware API: `getGroupSaveState(groupKey, sourceIds)` → `'all'|'some'|'none'`; `saveGroup(sources)`, `unsaveGroup(articleIds)`, `toggleGroupSource(source, groupKey)`; `savedByGroup` (Map of groupKey → Set\<articleId\>)
+  - Search API: `saveSearch(query, dateFrom, dateTo)`, `unsaveSearch(id)`, `isSearchSaved(query)`, `getSavedSearchId(query)`, `savedSearches`
 
 ### Modal State (`src/App.jsx`)
 
@@ -79,7 +81,7 @@ All service modules expose stable async function signatures. Replace internals i
 - **`http.js`** — exports one pre-configured axios instance: `supabaseHttp` (Supabase REST with `apikey` + `Authorization` headers; JWT attached via request interceptor).
 - **`articlesService.js`** — re-exports `getArticles` and `searchArticles` from `newsService.js`; `getArticlesByIds` is retired (returns empty).
 - **`newsService.js`** — thin client over the `get-news` Supabase Edge Function. `getArticles` calls with `mode=browse`; `searchArticles` calls with `mode=search`. The function owns all cache logic and newsdata.io access server-side.
-- **`savedArticleService.js`** — `getSavedArticles`, `saveArticle`, `unsaveArticle`; reads/writes Supabase `saved_article` table.
+- **`savedArticleService.js`** — `getSavedArticles`, `saveArticle`, `unsaveArticle`; bulk: `saveArticles` (POST array with `Prefer: resolution=ignore-duplicates`), `unsaveArticles(userId, articleIds)` (DELETE with `in.(...)` filter); all inserts write `group_key`; reads/writes Supabase `saved_article` table.
 - **`savedSearchService.js`** — `getSavedSearches`, `saveSearch`, `unsaveSearch`; reads/writes Supabase `saved_search` table.
 - **`authService.js`** — **still mock**: in-memory accounts, seed: `demo@example.com / password`. Replace internals in Stage 2 — function signatures stay the same. Any token passed to `validateResetToken` is valid **except** the literal string `'expired'` — navigate to `/password-reset/expired` to exercise the expired-token UI.
 - **`paymentService.js`** — `initiateDonation({ amount })`; stub returning `{ ok: true, stub: true }`
@@ -89,16 +91,21 @@ All service modules expose stable async function signatures. Replace internals i
 Each article object in the app has these fields — the contract between the service layer and all UI components:
 
 ```
-id          string   e.g. "reuters-abc123"
-region      string   "World" | "US" | "Local" | "Saved" | "Search"
-category    string   e.g. "Business"
+id          string     e.g. "reuters-abc123"
+region      string     "World" | "US" | "Local" | "Saved" | "Search"
+category    string     e.g. "Business"
 title       string
-publishDate string   ISO 8601
-source      string   e.g. "reuters"
-snippet     string   short description
-imageUrl    string   URL
-url         string   source article URL (opened in new tab on card click)
+publishDate string     ISO 8601
+source      string     e.g. "reuters" (representative source)
+snippet     string     short description
+imageUrl    string     URL
+url         string     source article URL
+groupKey    string     normalized group key (group_key ?? article_id from cache)
+sourceCount number     count of syndicated sources in the group (≥ 1)
+sources     object[]   all sources sorted a→z: { id, source, url, imageUrl, publishDate, title, snippet }
 ```
+
+Cards with `sourceCount > 1` show a "N sources" badge and open a `SourcePickerPopover` on click. Single-source cards open the URL directly. `SourcePickerPopover` (`src/components/articles/SourcePickerPopover.jsx`) is anchored below the card via `position: absolute; top: 100%` inside a `position: relative` wrapper in `ArticleGrid`.
 
 ### Routing (`src/App.jsx`)
 

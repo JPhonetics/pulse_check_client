@@ -29,13 +29,14 @@ export default function ArticleCard({ article, saveState = 'none', onSaveToggle,
     }
   }, [article, onOpenPicker]);
 
+  const anySaved = saveState !== 'none';
+
   const bookmarkClass = [
     styles.bookmark,
-    saveState === 'all' ? styles.saved : '',
-    saveState === 'some' ? styles.bookmarkPartial : '',
+    anySaved ? styles.saved : '',
   ].filter(Boolean).join(' ');
 
-  const bookmarkIcon = saveState === 'all' ? 'icon-bookmark-filled' : 'icon-bookmark';
+  const bookmarkIcon = anySaved ? 'icon-bookmark-filled' : 'icon-bookmark';
 
   const bookmarkLabel =
     saveState === 'all' ? 'Unsave article' :
@@ -68,7 +69,7 @@ export default function ArticleCard({ article, saveState = 'none', onSaveToggle,
             className={bookmarkClass}
             onClick={handleBookmark}
             aria-label={bookmarkLabel}
-            aria-pressed={saveState === 'all'}
+            aria-pressed={anySaved}
           >
             <Icon id={bookmarkIcon} size={18} />
           </button>

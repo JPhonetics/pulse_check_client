@@ -33,6 +33,7 @@ export default function SavedArticlesPage() {
       sources: members.map(m => ({
         id: m.id, source: m.source, url: m.url,
         imageUrl: m.imageUrl || '', publishDate: m.publishDate, title: m.title,
+        snippet: m.snippet || '',
         groupKey: m.groupKey ?? m.id,
       })),
       sourceCount: members.length,
@@ -75,6 +76,7 @@ export default function SavedArticlesPage() {
             unsaveGroup={unsaveGroup}
             toggleGroupSource={toggleGroupSource}
             user={user}
+            openSingleSourceDirectly={true}
           />
           <Pagination page={safePage} totalPages={totalPages} onChange={setPage} />
         </>
