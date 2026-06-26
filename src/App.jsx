@@ -5,7 +5,6 @@ import Sidebar from './components/layout/Sidebar';
 import AuthModal from './components/modals/AuthModal';
 import LocalRegionModal from './components/modals/LocalRegionModal';
 import UpdateProfileModal from './components/modals/UpdateProfileModal';
-import DonateModal from './components/modals/DonateModal';
 import RegionCarryoverModal from './components/modals/RegionCarryoverModal';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
@@ -32,7 +31,7 @@ function AboutPage() {
   );
 }
 
-// modal names: null | 'auth' | 'location' | 'donate' | 'profile'
+// modal names: null | 'auth' | 'location' | 'profile'
 export default function App() {
   const { user, pendingRegionCarryover } = useAuth();
   const [region, setRegion] = useState('World');
@@ -71,7 +70,6 @@ export default function App() {
         onMenuToggle={() => setSidebarOpen(true)}
         onAuthRequired={handleAuthRequired}
         onLocationEdit={() => setModal('location')}
-        onDonate={() => setModal('donate')}
       />
 
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -116,9 +114,6 @@ export default function App() {
       )}
       {modal === 'profile' && user && (
         <UpdateProfileModal onClose={closeModal} />
-      )}
-      {modal === 'donate' && (
-        <DonateModal onClose={closeModal} />
       )}
       {pendingRegionCarryover && (
         <RegionCarryoverModal />
