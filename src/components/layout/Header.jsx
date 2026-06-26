@@ -57,14 +57,16 @@ export default function Header({
     navigate(`/search?q=${encodeURIComponent(q)}`);
   }, [searchValue, navigate]);
 
+  const isOnHome = routerLocation.pathname === '/';
+
   const handleRegionChange = useCallback((newRegion) => {
     if (newRegion === 'Local' && !localRegion) {
       onLocationEdit?.();
       return;
     }
-    if (isOnSearch) navigate('/');
+    if (!isOnHome) navigate('/');
     onRegionChange(newRegion);
-  }, [localRegion, isOnSearch, navigate, onRegionChange, onLocationEdit]);
+  }, [localRegion, isOnHome, navigate, onRegionChange, onLocationEdit]);
 
   const handleUserIconClick = useCallback(() => {
     if (user) {
@@ -147,7 +149,7 @@ export default function Header({
       </div>
 
       {/* ── Sub-category row ─────────────────────────────────────────── */}
-      <SubcategoryRow active={category} onChange={(cat) => { if (isOnSearch) navigate('/'); onCategoryChange(cat); }} />
+      <SubcategoryRow active={category} onChange={(cat) => { if (!isOnHome) navigate('/'); onCategoryChange(cat); }} />
     </header>
   );
 }

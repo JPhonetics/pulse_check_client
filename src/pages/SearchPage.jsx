@@ -13,7 +13,7 @@ export default function SearchPage({ onAuthRequired }) {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const { user } = useAuth();
-  const { savedArticleIds, toggleSaveArticle, isSearchSaved, saveSearch, unsaveSearch, getSavedSearchId } = useSaved();
+  const { savedArticleIds, toggleSaveArticle, isSearchSaved, saveSearch, unsaveSearch, getSavedSearchId, getGroupSaveState, saveGroup, unsaveGroup, toggleGroupSource } = useSaved();
 
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
@@ -119,6 +119,11 @@ export default function SearchPage({ onAuthRequired }) {
             savedIds={user ? savedArticleIds : new Set()}
             onSaveToggle={a => toggleSaveArticle(a)}
             onLoginRequired={() => onAuthRequired?.('Log in to save articles.')}
+            getGroupSaveState={getGroupSaveState}
+            saveGroup={saveGroup}
+            unsaveGroup={unsaveGroup}
+            toggleGroupSource={toggleGroupSource}
+            user={user}
           />
           <Pagination page={result.page} totalPages={result.totalPages} onChange={setPage} />
         </>

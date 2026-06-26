@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import * as authService from '../services/authService';
 
@@ -12,22 +12,45 @@ function loadFromStorage() {
   }
 }
 
+function persistToStorage(region) {
+  try {
+    if (region) {
+      localStorage.setItem(STORAGE_KEY, region);
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  } catch {
+    // storage unavailable
+  }
+}
+
 const LocationContext = createContext(null);
 
 export function LocationProvider({ children }) {
   const { user } = useAuth();
   const [localRegion, setLocalRegionState] = useState(loadFromStorage);
+  const prevUserIdRef = useRef(user?.id ?? null);
+
+  // On login: load location from DB profile. On logout: clear stored region.
+  useEffect(() => {
+    const prevId = prevUserIdRef.current;
+    const currId = user?.id ?? null;
+    prevUserIdRef.current = currId;
+
+    if (currId && currId !== prevId) {
+      // User just logged in — fetch their saved location from the DB.
+      authService.fetchUserProfile(currId).then(profile => {
+        if (profile?.local_city && profile?.local_state) {
+          const region = `${profile.local_city}, ${profile.local_state}`;
+          persistToStorage(region);
+          setLocalRegionState(region);
+        }
+      }).catch(() => {});
+    }
+  }, [user]);
 
   const setLocalRegion = useCallback((region) => {
-    try {
-      if (region) {
-        localStorage.setItem(STORAGE_KEY, region);
-      } else {
-        localStorage.removeItem(STORAGE_KEY);
-      }
-    } catch {
-      // storage unavailable
-    }
+    persistToStorage(region);
     setLocalRegionState(region);
 
     if (user && region) {
