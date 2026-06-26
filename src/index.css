@@ -24,7 +24,7 @@
   --color-white:      #FFFFFF;
 
   /* Semantic aliases */
-  --bg:            var(--color-gray-100);
+  --bg:            var(--color-white);
   --surface:       var(--color-white);
   --text:          var(--color-black);
   --text-muted:    var(--color-gray-500);
