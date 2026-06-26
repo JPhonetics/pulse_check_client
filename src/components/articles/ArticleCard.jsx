@@ -30,16 +30,18 @@ export default function ArticleCard({ article, isSaved = false, onSaveToggle, on
       onKeyDown={e => { if (e.key === 'Enter') handleCardClick(); }}
       aria-label={article.title}
     >
-      <div className={styles.imageWrap}>
-        {article.imageUrl ? (
-          <img
-            src={article.imageUrl}
-            alt=""
-            className={styles.image}
-            loading="lazy"
-            onError={e => { e.target.style.display = 'none'; }}
-          />
-        ) : null}
+      <div className={`${styles.imageWrap} ${!article.imageUrl ? styles.imageWrapPlaceholder : ''}`}>
+        <img
+          src={article.imageUrl || '/logo_outline.png'}
+          alt=""
+          className={article.imageUrl ? styles.image : styles.imagePlaceholder}
+          loading="lazy"
+          onError={e => {
+            e.target.src = '/logo_outline.png';
+            e.target.className = styles.imagePlaceholder;
+            e.target.parentElement.classList.add(styles.imageWrapPlaceholder);
+          }}
+        />
       </div>
 
       <div className={styles.body}>
