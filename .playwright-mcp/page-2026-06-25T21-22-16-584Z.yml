@@ -1,0 +1,153 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Thursday, June 25, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Latest Headlines" [level=1] [ref=e61]
+    - generic [ref=e63]:
+      - 'link "Fact Check: Did PM Modi Announce Free Air Conditioners For Aadhaar Users? Here’s The Truth Behind The Viral Claim" [ref=e64] [cursor=pointer]':
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: All
+            - button "Save article" [ref=e69]:
+              - img [ref=e70]
+          - 'heading "Fact Check: Did PM Modi Announce Free Air Conditioners For Aadhaar Users? Here’s The Truth Behind The Viral Claim" [level=3] [ref=e72]'
+          - paragraph [ref=e73]: "A viral video claims PM Modi has announced free air conditioners for Aadhaar card holders. PIB Fact Check has now clarified that the video is fake and created using AI. The post Fact Check: Did PM Modi Announce Free Air Conditioners For Aadhaar Users? Here’s The Truth Behind The Viral Claim appeared first on The Sunday Guardian ."
+          - generic [ref=e74]:
+            - generic [ref=e75]: thesundayguardian
+            - generic [ref=e76]: Jun 25, 2026
+      - link "Boracay named 8th best island in Asia-Pacific" [ref=e77] [cursor=pointer]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]: All
+            - button "Save article" [ref=e82]:
+              - img [ref=e83]
+          - heading "Boracay named 8th best island in Asia-Pacific" [level=3] [ref=e85]
+          - paragraph [ref=e86]: ILOILO CITY — World-famous Boracay Island has been named the 8th Best Island in the Asia-Pacific by the Travel + Leisure Luxury Awards Asia Pacific. “Another proud milestone for our island paradise. The world continues to recognize what we proudly call home,” announced the Malay-Boracay Tourism Office. “As we celebrate this achievement, we remain committed to preserving the beauty of our island and delivering exceptional experiences to travelers from around the world,” added the Malay-Boracay Tourism Office. Boracay is one of the two Philippine islands included in this year’s list. The other is Palawan which ranked fourth. Earlier this year, Tripadvisor ranked Boracay as the 6th Best Beach in Asia. This latest recognition is part of Boracay’s growing list of international recognition. Late last year, Condé Nast Traveler’s Readers’ Choice Awards 2025 ranked Boracay first in its list of the best island for “sunbathing, surfing, and doing absolutely nothing.”
+          - generic [ref=e87]:
+            - generic [ref=e88]: mb
+            - generic [ref=e89]: Jun 25, 2026
+      - 'link "Oppo Reno16 series set to launch in India on THIS date: Gets 50MP telephoto camera, 4K HDR video, AI tools and more" [ref=e90] [cursor=pointer]':
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]: All
+            - button "Save article" [ref=e95]:
+              - img [ref=e96]
+          - 'heading "Oppo Reno16 series set to launch in India on THIS date: Gets 50MP telephoto camera, 4K HDR video, AI tools and more" [level=3] [ref=e98]'
+          - paragraph [ref=e99]: "Oppo Reno16 series: The telephoto camera offers true 3.5x optical zoom, allowing users to capture portraits, distant candid shots, and close-up compositions without relying only on digital zoom."
+          - generic [ref=e100]:
+            - generic [ref=e101]: zeenews
+            - generic [ref=e102]: Jun 25, 2026
+      - link "WhatsApp's pick of Indian fintech founder signals scale of payment ambitions" [ref=e103] [cursor=pointer]:
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - generic [ref=e107]: All
+            - button "Save article" [ref=e108]:
+              - img [ref=e109]
+          - heading "WhatsApp's pick of Indian fintech founder signals scale of payment ambitions" [level=3] [ref=e111]
+          - paragraph [ref=e112]: MUMBAI, June 25 (Reuters) - Kunal ⁠Shah, an Indian fintech founder with no engineering degree or Silicon Valley pedigree, has spent two decades building businesses around digital payments and consumer behaviour in India.
+          - generic [ref=e113]:
+            - generic [ref=e114]: thestar_my
+            - generic [ref=e115]: Jun 25, 2026
+      - link "Food security described as fundamental part of constitutional security" [ref=e116] [cursor=pointer]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e120]: All
+            - button "Save article" [ref=e121]:
+              - img [ref=e122]
+          - heading "Food security described as fundamental part of constitutional security" [level=3] [ref=e124]
+          - paragraph [ref=e125]: In the current context of geopolitical risks, food security should be regarded as an integral and fundamental part of constitutional security, Chairman of the Belarusian Constitutional Court Sergei Sivets said at the breakout session Legal Support for Food Security of the Union State as part of the 13th Forum of Regions of Belarus and Russia in Minsk.
+          - generic [ref=e126]:
+            - generic [ref=e127]: belta
+            - generic [ref=e128]: Jun 25, 2026
+      - link "Maple Tree Counselling Brings Culturally Attuned Therapy to Central Hong Kong as HK's Professionals, Families, and Expats Face Rising Emotional Pressure" [ref=e129] [cursor=pointer]:
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e133]: All
+            - button "Save article" [ref=e134]:
+              - img [ref=e135]
+          - heading "Maple Tree Counselling Brings Culturally Attuned Therapy to Central Hong Kong as HK's Professionals, Families, and Expats Face Rising Emotional Pressure" [level=3] [ref=e137]
+          - paragraph [ref=e138]: Located in the China Building on Queen’s Road Central, the boutique counselling practice offers therapy in English, Cantonese, Mandarin, German, and Indonesian, with inclusive support for individuals, couples, families, adolescents, LGBTQ+ clients, third-culture residents, and Hong Kong’s high-pressure professional community. Located in the China Building on Queen’s Road Central, the boutique counselling practice offers therapy in English, Cantonese, Mandarin, German, and Indonesian, with inclusive support for individuals, couples, families, adolescents, LGBTQ+ clients, third-culture residents, and Hong Kong’s high-pressure professional community.
+          - generic [ref=e139]:
+            - generic [ref=e140]: globenewswire
+            - generic [ref=e141]: Jun 25, 2026
+      - link "'I moved to the UK from Florida and 1 thing about the hot weather here surprised me'" [ref=e142] [cursor=pointer]:
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: All
+            - button "Save article" [ref=e147]:
+              - img [ref=e148]
+          - heading "'I moved to the UK from Florida and 1 thing about the hot weather here surprised me'" [level=3] [ref=e150]
+          - paragraph [ref=e151]: Brett said, when he stepped into the car and touched the steering wheel, he found himself "making a noise that I have never, ever made before in my life"
+          - generic [ref=e152]:
+            - generic [ref=e153]: expresscouk
+            - generic [ref=e154]: Jun 25, 2026
+      - link "Senate clerk of court to work over weekend for VP Sara pre-trial order" [ref=e155] [cursor=pointer]:
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e159]: All
+            - button "Save article" [ref=e160]:
+              - img [ref=e161]
+          - heading "Senate clerk of court to work over weekend for VP Sara pre-trial order" [level=3] [ref=e163]
+          - paragraph [ref=e164]: The pre-trial conference for the impeachment case against Vice President Sara Duterte is expected to conclude on Thursday evening, June 25. Senate Secretary Renato Bantug Jr., who also serves as clerk of the Senate impeachment court, said the conclusion of the evidence-marking process would formally end the pre-trial conference and pave the way for the preparation of the pre-trial order. “Formally, the pre-trial conference will be concluded, and then the staff work will begin on the drafting and finalization of the pre-trial order,” Bantug told reporters. He said it remains unclear when the pre-trial order will be released, noting that court personnel have yet to begin drafting the document. “I don't know yet. Until we start drafting it, I cannot estimate yet the time that it will take us to complete the draft of the pre-trial order. But we will finish it as soon, as fast as humanly possible,” Bantug said. He added that staff members may work through the weekend if necessary to complete the document. Bantug described the pre-trial order as a roadmap that will guide the conduct of the impeachment trial, taking into account the positions of both parties. “Essentially, a pre-trial order is the roadmap on how the trial can best be conducted, taking into consideration the respective positions of the parties,” he said. The order will also contain any stipulations and agreements reached by the prosecution and defense during the pre-trial conference. The prosecution and defense have already completed the pre-marking of evidence for Articles III and IV of the impeachment complaint. Bantug said the parties have also indicated the amount of time they expect to need for the presentation of their cases once the trial begins. Based on commitments made during the pre-trial proceedings, the prosecution estimates it will require around 62 trial dates to present its evidence, while the defense expects to need 35 trial dates.
+          - generic [ref=e165]:
+            - generic [ref=e166]: mb
+            - generic [ref=e167]: Jun 25, 2026
+      - link "Zelenskyy says Russia is shifting air defenses to Moscow and other key sites after drone strikes" [ref=e168] [cursor=pointer]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: All
+            - button "Save article" [ref=e173]:
+              - img [ref=e174]
+          - heading "Zelenskyy says Russia is shifting air defenses to Moscow and other key sites after drone strikes" [level=3] [ref=e176]
+          - paragraph [ref=e177]: Ukraine has caused fuel shortages and disrupted army supply lines in Russia.
+          - generic [ref=e178]:
+            - generic [ref=e179]: dailypress
+            - generic [ref=e180]: Jun 25, 2026
+    - navigation "Pagination" [ref=e181]:
+      - button "Page 1" [ref=e182]: "1"
+      - button "Page 2" [ref=e183] [cursor=pointer]: "2"
+      - button "Page 3" [ref=e184] [cursor=pointer]: "3"
+      - button "Page 4" [ref=e185] [cursor=pointer]: "4"

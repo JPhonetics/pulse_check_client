@@ -17,6 +17,3 @@ supabaseHttp.interceptors.request.use(async (config) => {
   return config;
 });
 
-export const newsdataHttp = axios.create({
-  baseURL: 'https://newsdata.io/api/1',
-});

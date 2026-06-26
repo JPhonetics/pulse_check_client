@@ -1,0 +1,153 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open menu" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - generic [ref=e9]: Thursday, June 25, 2026
+      - button "Set local region" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: Los Angeles, CA
+        - img [ref=e15]
+      - generic [ref=e17]:
+        - button "Donate" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Donate
+        - button "Log in or register" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+    - generic "Pulse Check" [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Pulse
+        - img [ref=e30]
+        - generic [ref=e32]: Check
+      - paragraph [ref=e33]: Your daily pulse on the world.
+    - generic [ref=e34]:
+      - navigation "Region" [ref=e35]:
+        - button "World" [ref=e36] [cursor=pointer]
+        - button "US" [ref=e37] [cursor=pointer]
+        - button "Local" [ref=e38] [cursor=pointer]
+      - search [ref=e39]:
+        - img [ref=e40]
+        - searchbox "Search articles" [ref=e42]
+    - group "Sub-category" [ref=e43]:
+      - button "All" [pressed] [ref=e44] [cursor=pointer]
+      - button "Business" [ref=e45] [cursor=pointer]
+      - button "Crime" [ref=e46] [cursor=pointer]
+      - button "Entertainment" [ref=e47] [cursor=pointer]
+      - button "Health" [ref=e48] [cursor=pointer]
+      - button "Politics" [ref=e49] [cursor=pointer]
+      - button "Sports" [ref=e50] [cursor=pointer]
+      - button "Tech" [ref=e51] [cursor=pointer]
+      - button "Weather" [ref=e52] [cursor=pointer]
+  - complementary "Site navigation" [ref=e53]:
+    - button "Close menu" [ref=e55] [cursor=pointer]:
+      - img [ref=e56]
+    - navigation [ref=e58]:
+      - button "About Us" [ref=e59] [cursor=pointer]
+  - main [ref=e60]:
+    - heading "Latest Headlines" [level=1] [ref=e61]
+    - generic [ref=e186]:
+      - link "Coloplast A/S (OTCMKTS:CLPBY) Hits New 12-Month Low – Here’s Why" [ref=e187] [cursor=pointer]:
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - generic [ref=e191]: All
+            - button "Save article" [ref=e192]:
+              - img [ref=e193]
+          - heading "Coloplast A/S (OTCMKTS:CLPBY) Hits New 12-Month Low – Here’s Why" [level=3] [ref=e195]
+          - paragraph [ref=e196]: Coloplast A/S Sponsored ADR (OTCMKTS:CLPBY – Get Free Report) shares hit a new 52-week low on Tuesday . The stock traded as low as $5.65 and last traded at $5.71, with a volume of 563905 shares trading hands. The stock had previously closed at $5.75. Wall Street Analyst Weigh In A number of brokerages have [...]
+          - generic [ref=e197]:
+            - generic [ref=e198]: zolmax
+            - generic [ref=e199]: Jun 25, 2026
+      - link "New town administrator expects to save money" [ref=e200] [cursor=pointer]:
+        - generic [ref=e202]:
+          - generic [ref=e203]:
+            - generic [ref=e204]: All
+            - button "Save article" [ref=e205]:
+              - img [ref=e206]
+          - heading "New town administrator expects to save money" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Bryce Bierman thinks that his sense of frugality came from his grandfather via his own father. Bierman’s grandfather grew... The post New town administrator expects to save money appeared first on The Charlotte News .
+          - generic [ref=e210]:
+            - generic [ref=e211]: charlottenewsvt_org
+            - generic [ref=e212]: Jun 25, 2026
+      - link "Kerala Lottery Karunya Plus KN-629 result out today (25-06-2026); check Rs 1 crore prize winning number and full list here" [ref=e213] [cursor=pointer]:
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: All
+            - button "Save article" [ref=e218]:
+              - img [ref=e219]
+          - heading "Kerala Lottery Karunya Plus KN-629 result out today (25-06-2026); check Rs 1 crore prize winning number and full list here" [level=3] [ref=e221]
+          - paragraph [ref=e222]: "Kerala lottery results today: Kerala Lottery Karunya Plus KN-629 results for Thursday, 25 June 2026, have been officially declared. Ticket holders can now check their numbers for the Rs 1 crore first prize and other attractive cash rewards. Full list of other winning numbers here."
+          - generic [ref=e223]:
+            - generic [ref=e224]: economictimes_indiatimes
+            - generic [ref=e225]: Jun 25, 2026
+      - link "Is college worth it? Here are the majors that pay off. - USA Today" [ref=e226] [cursor=pointer]:
+        - generic [ref=e228]:
+          - generic [ref=e229]:
+            - generic [ref=e230]: All
+            - button "Save article" [ref=e231]:
+              - img [ref=e232]
+          - heading "Is college worth it? Here are the majors that pay off. - USA Today" [level=3] [ref=e234]
+          - paragraph [ref=e235]: Is college worth it? Here are the majors that pay off. USA Today See more headlines & perspectives on Google News
+          - generic [ref=e236]:
+            - generic [ref=e237]: google
+            - generic [ref=e238]: Jun 25, 2026
+      - 'link "Gold loan: Factors to remember before applying for one" [ref=e239] [cursor=pointer]':
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - generic [ref=e243]: All
+            - button "Save article" [ref=e244]:
+              - img [ref=e245]
+          - 'heading "Gold loan: Factors to remember before applying for one" [level=3] [ref=e247]'
+          - paragraph [ref=e248]: Before applying for a gold loan, it is crucial to understand a few factors. Each of these is important to determine the amount of loan you can get and the amount of money you have to repay. Therefore, you should be mindful of all these factors before applying for a gold loan.
+          - generic [ref=e249]:
+            - generic [ref=e250]: news9live
+            - generic [ref=e251]: Jun 25, 2026
+      - 'link "Spartan Metals Corp.: Spartan Metals Reports Significant Silver-Antimony-Copper Assays with Grades up to 1,927 g/t Ag, 0.67% Sb, and 1.83% Cu from Past Producing Antelope Mine, Nevada" [ref=e252] [cursor=pointer]':
+        - generic [ref=e254]:
+          - generic [ref=e255]:
+            - generic [ref=e256]: All
+            - button "Save article" [ref=e257]:
+              - img [ref=e258]
+          - 'heading "Spartan Metals Corp.: Spartan Metals Reports Significant Silver-Antimony-Copper Assays with Grades up to 1,927 g/t Ag, 0.67% Sb, and 1.83% Cu from Past Producing Antelope Mine, Nevada" [level=3] [ref=e260]'
+          - paragraph [ref=e261]: "Vancouver, British Columbia--(Newsfile Corp. - June 25, 2026) - Spartan Metals Corp. (TSXV: W) (OTCQB: SPRMF) (FSE: J03) (\"Spartan\" or the \"Company\") is pleased to announce assay results from rece..."
+          - generic [ref=e262]:
+            - generic [ref=e263]: finanznachrichten_de
+            - generic [ref=e264]: Jun 25, 2026
+      - link "Thousands feared dead after two major earthquakes strike Venezuela" [ref=e265] [cursor=pointer]:
+        - generic [ref=e267]:
+          - generic [ref=e268]:
+            - generic [ref=e269]: All
+            - button "Save article" [ref=e270]:
+              - img [ref=e271]
+          - heading "Thousands feared dead after two major earthquakes strike Venezuela" [level=3] [ref=e273]
+          - paragraph [ref=e274]: Thousands of Venezuelans were feared dead on Thursday after two powerful earthquakes wreaked havoc in and around the capital Caracas, trapping people beneath the rubble of collapsed buildings and setting off powerful aftershocks. At least 32 people were confirmed dead and 700 injured after a magnitude 7.2 earthquake hit about 160 km (100 miles) west of Caracas, followed less than a minute later by a magnitude 7.5 tremor, according to the US Geological Survey.
+          - generic [ref=e275]:
+            - generic [ref=e276]: miningweekly
+            - generic [ref=e277]: Jun 25, 2026
+      - 'link "Kingfisher Metals Corp.: Kingfisher Announces Arrival of Second Diamond Drill at HWY 37 Project; Targeting Hank Porphyry Cu-Au" [ref=e278] [cursor=pointer]':
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - generic [ref=e282]: All
+            - button "Save article" [ref=e283]:
+              - img [ref=e284]
+          - 'heading "Kingfisher Metals Corp.: Kingfisher Announces Arrival of Second Diamond Drill at HWY 37 Project; Targeting Hank Porphyry Cu-Au" [level=3] [ref=e286]'
+          - paragraph [ref=e287]: "Vancouver, British Columbia--(Newsfile Corp. - June 25, 2026) - Kingfisher Metals Corp. (TSXV: KFR) (FSE: 9700) (OTCQB: KGFMF) (\"Kingfisher\" or the \"Company\") announces that the second of three di..."
+          - generic [ref=e288]:
+            - generic [ref=e289]: finanznachrichten_de
+            - generic [ref=e290]: Jun 25, 2026
+      - 'link "Plentisoft: Saventify Brings Wedding Invitations and RSVPs Online in 13 Languages as Couples Plan Across Borders" [ref=e291] [cursor=pointer]':
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e295]: All
+            - button "Save article" [ref=e296]:
+              - img [ref=e297]
+          - 'heading "Plentisoft: Saventify Brings Wedding Invitations and RSVPs Online in 13 Languages as Couples Plan Across Borders" [level=3] [ref=e299]'
+          - paragraph [ref=e300]: Copenhagen, Denmark--(Newsfile Corp. - June 25, 2026) - Saventify, a digital wedding invitation and RSVP platform, has launched multilingual support across 13 languages, giving couples a single wa...
+          - generic [ref=e301]:
+            - generic [ref=e302]: finanznachrichten_de
+            - generic [ref=e303]: Jun 25, 2026
+    - navigation "Pagination" [ref=e304]:
+      - button "Page 1" [ref=e305] [cursor=pointer]: "1"
+      - button "Page 2" [ref=e306]: "2"
+      - button "Page 3" [ref=e307] [cursor=pointer]: "3"
+      - button "Page 4" [ref=e308] [cursor=pointer]: "4"

@@ -18,11 +18,12 @@ No test runner is configured yet.
 Copy `.env.example` to `.env` and fill in values before running:
 
 ```
+VITE_SUPABASE_BASE_URL=https://your-project-id.supabase.co
 VITE_SUPABASE_URL=https://your-project-id.supabase.co/rest/v1
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_NEWSDATA_API_KEY=your_newsdata_io_api_key
-VITE_TEST_USER_ID=uuid_of_manually_inserted_test_user   # temporary; removed when real auth is wired
 ```
+
+`VITE_SUPABASE_BASE_URL` is used by `supabaseClient.js` (Supabase JS SDK for auth session management) and by `newsService.js` to build the Edge Function URL (`/functions/v1/get-news`). `VITE_SUPABASE_URL` is the REST base URL used by the axios `supabaseHttp` instance in `http.js`. `VITE_NEWSDATA_API_KEY` is no longer a frontend concern — it lives only as a server-side secret on the `get-news` Edge Function.
 
 ## Project Overview
 
@@ -30,7 +31,7 @@ VITE_TEST_USER_ID=uuid_of_manually_inserted_test_user   # temporary; removed whe
 
 The frontend is React 19 + React Router v7, bundled with Vite 8.
 
-**Current state (hybrid):** Article fetching and saved-content operations use real Supabase + newsdata.io APIs. Auth is still the in-memory mock from Stage 1. `SavedContext` uses `VITE_TEST_USER_ID` as a placeholder `user_id` until real auth is wired in.
+**Current state (hybrid):** Article fetching and saved-content operations use real Supabase + newsdata.io APIs. Auth is still the in-memory mock from Stage 1. `SavedContext` reads `user?.id` from `AuthContext` (null for guests); saved-content features are gated on being logged in.
 
 ## Product Spec
 
@@ -66,15 +67,18 @@ All modals are managed in `App` via a single `modal` state: `null | 'auth' | 'lo
 
 `App` also holds `authInitScreen` (`'login' | 'register'`) which is forwarded to `AuthModal` as `initialScreen` so callers can open directly to the register tab if needed.
 
-**`onAuthRequired` callback convention** (used throughout the tree): passing the string `'profile'` opens the profile modal directly; passing any other string (or no argument) opens the auth modal and uses the string as a contextual hint displayed to the user (e.g. `'Log in to save articles.'`).
+**`onAuthRequired` callback convention** (used throughout the tree): passing the string `'profile'` opens the profile modal directly; passing any other string (or no argument) opens the auth modal and uses the string as a contextual hint displayed to the user (e.g. `'Log in to save articles.'`). When the auth modal opens, the current path is saved to `sessionStorage` under `pc_return_to` for post-login redirect.
+
+**`RegionCarryoverModal`** is outside the `modal` state — it renders when `pendingRegionCarryover` is non-null in `AuthContext`. This triggers on login when the user had a guest local region set, prompting them to carry it over to their profile.
 
 ### Services (`src/services/`)
 
 All service modules expose stable async function signatures. Replace internals in Stage 2 — callers do not change.
 
-- **`http.js`** — exports two pre-configured axios instances: `supabaseHttp` (Supabase REST with `apikey` + `Authorization` headers) and `newsdataHttp` (newsdata.io base URL).
+- **`supabaseClient.js`** — exports a single `supabase` client (Supabase JS SDK) used for auth session management. `http.js` imports it to attach the session JWT to every `supabaseHttp` request.
+- **`http.js`** — exports one pre-configured axios instance: `supabaseHttp` (Supabase REST with `apikey` + `Authorization` headers; JWT attached via request interceptor).
 - **`articlesService.js`** — re-exports `getArticles` and `searchArticles` from `newsService.js`; `getArticlesByIds` is retired (returns empty).
-- **`newsService.js`** — real implementation: `getArticles` fetches from newsdata.io and caches results in the Supabase `article_cache` table (15-min TTL); Local region always fetches live with city keyword and falls back to state if < 1 page of results. `searchArticles` queries `article_cache` via Supabase (does not call newsdata.io). Both are async.
+- **`newsService.js`** — thin client over the `get-news` Supabase Edge Function. `getArticles` calls with `mode=browse`; `searchArticles` calls with `mode=search`. The function owns all cache logic and newsdata.io access server-side.
 - **`savedArticleService.js`** — `getSavedArticles`, `saveArticle`, `unsaveArticle`; reads/writes Supabase `saved_article` table.
 - **`savedSearchService.js`** — `getSavedSearches`, `saveSearch`, `unsaveSearch`; reads/writes Supabase `saved_search` table.
 - **`authService.js`** — **still mock**: in-memory accounts, seed: `demo@example.com / password`. Replace internals in Stage 2 — function signatures stay the same. Any token passed to `validateResetToken` is valid **except** the literal string `'expired'` — navigate to `/password-reset/expired` to exercise the expired-token UI.
@@ -149,6 +153,6 @@ What's done vs. still needed to complete the real-backend wiring:
 | `savedArticleService.js` / `savedSearchService.js` — real Supabase | Done |
 | `SavedContext` — persisted to Supabase with optimistic updates | Done |
 | `authService.js` — replace mock with real auth backend | Remaining |
-| Wire `SavedContext` to real `user.id` (remove `VITE_TEST_USER_ID`) | Remaining |
+| Wire `SavedContext` to real `user.id` | Done |
 | `paymentService.js` — replace stub with Stripe Checkout redirect | Remaining |
 | `LocationContext` — sync local region to user profile on login | Remaining |
