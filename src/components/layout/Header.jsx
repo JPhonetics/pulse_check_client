@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useNavigate, useLocation as useRouterLocation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useLocation as useRouterLocation, useSearchParams, Link } from 'react-router-dom';
 import Icon from '../ui/Icon';
 import Logo from './Logo';
 import RegionTabs from '../ui/RegionTabs';
@@ -20,7 +20,6 @@ export default function Header({
   onMenuToggle,
   onAuthRequired,
   onLocationEdit,
-  onDonate,
 }) {
   const { user, logout } = useAuth();
   const { localRegion } = useLocation();
@@ -95,10 +94,10 @@ export default function Header({
         </div>
 
         <div className={styles.topRight}>
-          <button className={styles.donateBtn} onClick={onDonate}>
+          <Link to="/donate" className={styles.donateBtn}>
             <Icon id="icon-heart" size={14} />
             Donate
-          </button>
+          </Link>
           <div className={styles.userWrap} ref={dropdownRef}>
             <button
               className={`${styles.userBtn} ${user ? styles.loggedIn : ''}`}
