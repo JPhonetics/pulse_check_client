@@ -150,16 +150,16 @@ Each component has a co-located `.module.css` file (CSS Modules). Global design 
 - `app_outline/` contains wireframes (PNG) and the product spec — not shipped to production.
 - `src/data/locations.js` exports `searchLocations(query)` for the Local Region type-ahead (static list of ~80 US cities).
 
-## Stage 2 Remaining Work
+## Stage 2 Status
 
-What's done vs. still needed to complete the real-backend wiring:
+All Stage 2 backend wiring is complete:
 
 | Item | Status |
 |---|---|
 | `newsService.js` — real newsdata.io + Supabase article cache | Done |
 | `savedArticleService.js` / `savedSearchService.js` — real Supabase | Done |
 | `SavedContext` — persisted to Supabase with optimistic updates | Done |
-| `authService.js` — replace mock with real auth backend | Remaining |
-| Wire `SavedContext` to real `user.id` | Done |
-| `paymentService.js` — replace stub with Stripe Checkout redirect | Remaining |
-| `LocationContext` — sync local region to user profile on login | Remaining |
+| `authService.js` — real Supabase auth (`signInWithPassword`, `signUp`, `updateUser`, etc.) | Done |
+| `AuthContext` — session via `getSession` + `onAuthStateChange`; region carryover on SIGNED_IN | Done |
+| `LocationContext` — loads DB profile region on login; persists on `setLocalRegion` | Done |
+| `donationService.js` — calls `process-donation` Edge Function, returns `client_secret` | Done |
